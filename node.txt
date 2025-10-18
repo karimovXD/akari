@@ -1,0 +1,45 @@
+work with modules 
+404 page
+font
+
+
+useRouter hooks "push, refresh, back, forward"
+
+
+about project page
+
+
+///useRefresh////////////////////////////////////////////////////////////////////
+usePathname "useRefresh" for get current page": {
+✅ CRUD (create/read/update/delete)
+✅ Профиль / настройки / личные данные
+✅ Админки / дашборды
+✅ Обновление UI после действий без перезагрузки страницы
+✅ SSR-фетчинг с cache: 'no-store'
+
+const handleUpload = async () => {
+  await uploadFile()
+  router.refresh()
+}
+
+///useRefresh//////////////////////////////////////////////////////////////////
+
+'use client'
+import { useRouter } from 'next/navigation'
+
+export default function DeleteButton({ id }: { id: string }) {
+  const router = useRouter()
+
+  const handleDelete = async () => {
+    await fetch(`/api/posts/${id}`, { method: 'DELETE' })
+    router.refresh() // 🔁 обновляем список постов
+  }
+
+  return <button onClick={handleDelete}>Удалить</button>
+}
+
+}
+///useRefresh/////////////////////////////////////////////////////////////////
+
+
+each file need one types file and random.data.ts > like menu.data.ts
