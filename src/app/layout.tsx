@@ -49,6 +49,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/assets/logos/website-logo/akari-logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -58,7 +61,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.variable} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
