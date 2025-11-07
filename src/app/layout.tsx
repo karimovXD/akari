@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/app/providers/theme.provider";
 import { SITE_NAME } from "@/constants/seo.constans";
+import { QueryProvider } from "./providers/QueryProvider";
 //@ts-ignore
 import "./globals.css";
 
@@ -12,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: `$s - ${SITE_NAME}`,
+    template: `%s - ${SITE_NAME}`,
     default: `${SITE_NAME} — Anime Universe`,
   },
   description: `${SITE_NAME} is a place for anime lovers — discover series, characters, and stories brought to life with elegant design and detail.`,
@@ -65,14 +66,16 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Search } from "./Search";
 
-export const metadaData: Metadata = {
+export const metadata: Metadata = {
   title: "Search",
 };
 
