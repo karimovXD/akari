@@ -47,3 +47,14 @@ export default function DeleteButton({ id }: { id: string }) {
 
 
 each file need one types file and random.data.ts > like menu.data.ts
+
+for future component
+
+      {/*<div className="w-full aspect-[1/1.5] relative overflow-hidden">
+    <Image
+      src={item.images.jpg?.large_image_url as string}
+      alt={item.title}
+      className="w-full rounded-sm object-cover"
+      fill
+    />
+  </div>*/}

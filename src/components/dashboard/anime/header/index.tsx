@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui/dashboard-ui/Container";
+import { Container } from "@/components/dashboard/anime/main/components/Container";
 import styles from "./styles.module.scss";
 import Logo from "./logo";
 import Search from "./search";
@@ -10,12 +10,12 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "border-b h-[4-5rem] lg:h-[5rem] backdrop-blur-md bg-background/60 top-0 boder",
+        "border-b lg:h-[5rem] backdrop-blur-md bg-background/60 boder",
         styles.header
       )}
     >
-      <Container className={styles.header__container}>
-        <div className={styles.header__left_side}>
+      <Container className={cn(styles.header__container)}>
+        <div className={cn(styles.header__left_side)}>
           <Logo />
           <HeaderMenu />
         </div>

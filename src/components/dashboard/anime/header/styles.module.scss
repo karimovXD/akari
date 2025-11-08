@@ -1,7 +1,10 @@
 .header {
     width: 100%;
     position: sticky;
-
+    z-index: 49;
+    top: 0;
+    height: 4.5rem;
+    
     &__container {
         height: 100%;
         display: flex;

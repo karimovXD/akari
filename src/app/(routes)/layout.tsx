@@ -1,5 +1,5 @@
 import Header from "@/components/dashboard/anime/header";
-import { Container } from "@/components/ui/dashboard-ui/Container";
+import { Container } from "@/components/dashboard/anime/main/components/Container";
 
 export default function RoutesLayout({
   children,
