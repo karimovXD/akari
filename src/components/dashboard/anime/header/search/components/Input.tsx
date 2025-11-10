@@ -1,32 +1,49 @@
 "use client";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
+import React from "react";
 import { SearchIcon } from "lucide-react";
-import { useDebouncedCallback } from "../services/debounceCallback.service";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Input } from "@/components/ui/input";
 
 export const SearchInput: React.FC = () => {
   const router = useRouter();
+  const [query, setQuery] = React.useState("");
 
-  const debouncedSearch = useDebouncedCallback((value: string) => {
-    if (value.trim()) return router.push(DASHBOARD_PAGES.SEARCH.QUERY(value));
-    else return router.push(DASHBOARD_PAGES.HOME);
-  }, 1000);
+  const handleSearch = React.useCallback(() => {
+    const trimmed = query.trim();
+    router.push(
+      trimmed ? DASHBOARD_PAGES.SEARCH.QUERY(trimmed) : DASHBOARD_PAGES.HOME
+    );
+  }, [query, router]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+    }
+  };
 
   return (
-    <InputGroup>
-      <InputGroupInput
-        placeholder="Search..."
-        onChange={(e) => debouncedSearch(e.target.value)}
+    <ButtonGroup>
+      <Input
         type="text"
+        className="w-[15rem]"
+        placeholder="Search Anime, Manga, and more..."
+        aria-label="Search input"
+        onKeyDown={handleKeyDown}
+        onChange={(e) => setQuery(e.target.value)}
       />
-      <InputGroupAddon>
+      <Button
+        type="button"
+        variant="outline"
+        aria-label="Search button"
+        disabled={!query.trim()}
+        onClick={handleSearch}
+      >
         <SearchIcon />
-      </InputGroupAddon>
-    </InputGroup>
+      </Button>
+    </ButtonGroup>
   );
 };

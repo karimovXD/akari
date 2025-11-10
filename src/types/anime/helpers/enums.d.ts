@@ -1,5 +1,9 @@
 // Genre type always returns "anime" or "manga"
-export type MediaType = "anime" | "manga";
+export type MediaType = "anime" | "manga" | "character" | "person" | "producer" | "magazine" | "studio" | "licensor" | "theme" | "demographic" | "genre";
+
+//Manga basicTypes
+export type MangaType = "manga" | "novel" | "lightnovel" | "oneshot" | "doujin" | "manhwa" | "manhua";
+export type MangaStatus = "publishing" | "complete" | "hiatus" | "discontinued" | "upcoming";
 
 // Common enum for anime types
 export const EnumAnimeType = {

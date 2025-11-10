@@ -10,7 +10,7 @@ export const menuData: menuDataType[] = [
     {
         id: 2,
         title: "mangas",
-        link: DASHBOARD_PAGES.MANGA,
+        link: DASHBOARD_PAGES.MANGA.ROOT,
     },
     {
         id: 3,
