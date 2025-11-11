@@ -18,7 +18,12 @@ class DASHBOARD {
     };
     SEARCH = {
         ROOT: `${this.root}search`,
-        QUERY: (q: string) => `${this.root}search?result=${encodeURIComponent(q)}`,
+        QUERY: (result: string, category: string) => {
+            const params = new URLSearchParams();
+            if (result.trim()) params.set("result", result.trim());
+            if (category) params.set("category", category);
+            return `/search?${params.toString()}`;
+        },
     };
 }
 

@@ -6,15 +6,20 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Input } from "@/components/ui/input";
+import { SelectComponent } from "./select/Select";
+import type { MenuTitles } from "../types/selectMenu.data";
 
 export const SearchInput: React.FC = () => {
   const router = useRouter();
   const [query, setQuery] = React.useState("");
+  const [selectQuery, setSelectQuery] = React.useState<MenuTitles>("all");
 
   const handleSearch = React.useCallback(() => {
     const trimmed = query.trim();
     router.push(
-      trimmed ? DASHBOARD_PAGES.SEARCH.QUERY(trimmed) : DASHBOARD_PAGES.HOME
+      trimmed
+        ? DASHBOARD_PAGES.SEARCH.QUERY(trimmed, selectQuery)
+        : DASHBOARD_PAGES.HOME
     );
   }, [query, router]);
 
@@ -27,6 +32,10 @@ export const SearchInput: React.FC = () => {
 
   return (
     <ButtonGroup>
+      <SelectComponent
+        selectQuery={selectQuery}
+        setSelectQuery={setSelectQuery}
+      />
       <Input
         type="text"
         className="w-[15rem]"
