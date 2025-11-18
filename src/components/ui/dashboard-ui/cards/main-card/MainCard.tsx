@@ -12,9 +12,27 @@ interface PropsType {
   image: string;
   link: string;
   description: string;
+  duration?: string;
 }
 
-const MainCard: React.FC<PropsType> = ({ title, image, link, description }) => {
+const MainCard: React.FC<PropsType> = ({
+  title,
+  image,
+  link,
+  description,
+  duration = "",
+}) => {
+  const isDurationHave = duration && (
+    <>
+      <TypographyMuted className={cn(styles.card__description)}>
+        -
+      </TypographyMuted>
+      <TypographyMuted className={cn(styles.card__description)}>
+        {duration}
+      </TypographyMuted>
+    </>
+  );
+
   return (
     <Link href={link}>
       <div
@@ -26,9 +44,12 @@ const MainCard: React.FC<PropsType> = ({ title, image, link, description }) => {
         <TypographySmall className={cn(styles.card__title)}>
           {title}
         </TypographySmall>
-        <TypographyMuted className={cn(styles.card__description)}>
-          {description}
-        </TypographyMuted>
+        <div className={cn(styles.card__description__content)}>
+          <TypographyMuted className={cn(styles.card__description)}>
+            {description}
+          </TypographyMuted>
+          {isDurationHave}
+        </div>
       </div>
     </Link>
   );

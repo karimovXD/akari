@@ -31,14 +31,14 @@ export const SearchInput: React.FC = () => {
   };
 
   return (
-    <ButtonGroup>
+    <ButtonGroup className="w-full">
       <SelectComponent
         selectQuery={selectQuery}
         setSelectQuery={setSelectQuery}
       />
       <Input
         type="text"
-        className="w-[15rem]"
+        className="w-[11.5rem] sm:w-[15rem]"
         placeholder="Search Anime, Manga, and more..."
         aria-label="Search input"
         onKeyDown={handleKeyDown}

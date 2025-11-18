@@ -10,11 +10,11 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "border-b lg:h-[5rem] backdrop-blur-md bg-background/60 boder",
+        "border-b lg:h-[5rem] backdrop-blur-md bg-background/60",
         styles.header
       )}
     >
-      <Container className={cn(styles.header__container)}>
+      <Container className={cn(`${styles.header__container}`)}>
         <div className={cn(styles.header__left_side)}>
           <Logo />
           <HeaderMenu />

@@ -3,7 +3,7 @@ import { SERVER_ERROR_TEXT } from '@/constants/seo.constans';
 import type { SearchAnimeResponse, SearchCharacterResponse, SearchMangaResponse } from "@/types/anime/search";
 import type { AxiosError } from "axios";
 
-export const AlbumService = {
+export const SearchService = {
     async searchAnime(query: string, limit = 10): Promise<SearchAnimeResponse> {
         try {
             const { data } = await axiosInstance.get<SearchAnimeResponse>('/anime', {

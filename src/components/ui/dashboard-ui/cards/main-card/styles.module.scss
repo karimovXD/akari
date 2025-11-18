@@ -16,12 +16,19 @@
     flex-direction: column;
 
     &:hover {
-        filter: brightness(0.8);
+        filter: brightness(0.7);
     }
 
     &__title {
         font-weight: 800;
         color: white;
+    }
+
+    &__description__content {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 1;
     }
 
     &__description {

@@ -12,10 +12,13 @@ import {
   TypographyP,
   TypographySmall,
 } from "@/components/ui/dashboard-ui/typography/typography";
+import { Top } from "./shared/components/top/Top";
 
 export default function HomePage() {
   return (
-    <section className="text-center">
+    <section className="text-start">
+      <Top />
+      <Button>awds</Button>
       <TypographyH1>Taxing Laughter: The Joke Tax Chronicles</TypographyH1>
       <TypographyH2>The King's Plan</TypographyH2>
       <TypographyH3>TypographyH3</TypographyH3>
