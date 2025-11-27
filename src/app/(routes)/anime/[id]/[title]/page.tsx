@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import React from "react";
+import { Hajime } from "./Hajime";
 
 type PropsType = {
   params: {
@@ -16,12 +18,11 @@ export async function generateMetadata({
 }
 
 const page = ({ params }: PropsType) => {
-  const { title, id } = params;
+  const { id } = params;
 
   return (
     <div>
-      {title}
-      {id}
+      <Hajime id={Number(id)} />
     </div>
   );
 };

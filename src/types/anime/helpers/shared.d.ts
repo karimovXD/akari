@@ -42,6 +42,13 @@ export interface Pagination {
     };
 }
 
+export interface Broadcast {
+    day: string;
+    time: string;
+    timezone: string;
+    string: string;
+};
+
 // Base Types
 export interface BasePerson {
     mal_id: number;

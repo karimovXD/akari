@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__right_side {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+}

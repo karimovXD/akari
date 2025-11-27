@@ -54,7 +54,7 @@ export function TypographyH4({ children, className }: defaultTypographyType) {
 
 export function TypographyP({ children, className }: defaultTypographyType) {
   return (
-    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+    <p className={cn("leading-5.5 [&:not(:first-child)]:mt-5", className)}>
       {children}
     </p>
   );
