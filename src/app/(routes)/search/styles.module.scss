@@ -1,3 +1,27 @@
+.layout__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+
+    &__input {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__empty_content {
+        padding: 6rem 0;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 .search {
     display: flex;
     flex-direction: column;

@@ -6,14 +6,25 @@ import { cn } from "@/lib/utils";
 import styles from "./styles.module.scss";
 import { Characters } from "./components/characters/Characters";
 import { FilterCategoryComponent } from "./components/FilterCategoryComponent";
-import type { MenuTitles } from "@/components/dashboard/anime/header/search/types/selectMenu.data";
+import type { MenuTitles } from "@/components/ui/dashboard-ui/input/search/types/selectMenu.data";
+import {
+  TypographyH1,
+  TypographyP,
+} from "@/components/ui/dashboard-ui/typography/typography";
 
 export const Search = () => {
   const searchParams = useSearchParams();
   const result = searchParams.get("result") ?? "";
   const category = (searchParams.get("category") as MenuTitles) || "all";
 
-  return (
+  return result === "" ? (
+    <div className={styles.layout__content__empty_content}>
+      <TypographyH1>Search Anime & Manga</TypographyH1>
+      <TypographyP>
+        Enter a search term to find anime and manga titles.
+      </TypographyP>
+    </div>
+  ) : (
     <div className={cn(styles.search)}>
       <FilterCategoryComponent category="anime" categoryCurrentTitle={category}>
         <Anime result={result} />

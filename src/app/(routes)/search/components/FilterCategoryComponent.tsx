@@ -1,4 +1,4 @@
-import type { MenuTitles } from "@/components/dashboard/anime/header/search/types/selectMenu.data";
+import type { MenuTitles } from "@/components/ui/dashboard-ui/input/search/types/selectMenu.data";
 
 interface PropsType {
   children: React.ReactNode;

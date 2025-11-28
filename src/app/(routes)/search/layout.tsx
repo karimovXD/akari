@@ -1,7 +1,21 @@
+import { BackButton } from "@/components/ui/dashboard-ui/buttons/BackButton";
+import { SearchInput } from "@/components/ui/dashboard-ui/input/search/components/Input";
+import styles from "./styles.module.scss";
+
 export default function RoutesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div className="min-h-svh max-h-full">
+      <div className={styles.layout__content}>
+        <BackButton />
+        <div className={styles.layout__content__input}>
+          <SearchInput />
+        </div>
+      </div>
+      {children}
+    </div>
+  );
 }
