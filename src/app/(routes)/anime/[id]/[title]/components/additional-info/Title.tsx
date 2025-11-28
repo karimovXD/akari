@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { TypographyH3 } from "@/components/ui/dashboard-ui/typography/typography";
 import type { LucideIcon } from "lucide-react";
+import styles from "./styles.module.scss";
 
 interface PropsType {
   title: string;
@@ -15,13 +15,11 @@ export const Title: React.FC<PropsType> = ({
   icon: Icon,
   ifIcon,
 }) => (
-  <div className="flex flex-col gap-2">
-    <TypographyH3
-      className={`${ifIcon && "flex items-center justify-start gap-1"}`}
-    >
+  <div className={styles.title}>
+    <TypographyH3 className={`${ifIcon && styles.title__with_icon}`}>
       {ifIcon && Icon && <Icon size={22} />}
       {title}
     </TypographyH3>
-    <div className="flex items-center justify-start gap-1">{children}</div>
+    <div className={styles.title__content}>{children}</div>
   </div>
 );

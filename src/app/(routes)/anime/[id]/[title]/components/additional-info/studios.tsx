@@ -9,7 +9,7 @@ interface PropsType {
 export const Studios: React.FC<PropsType> = ({ data }) => (
   <Title ifIcon={false} title="Studios">
     {(data ?? []).map((item) => (
-      <Button key={item.mal_id} variant="outline" type="button">
+      <Button key={item.mal_id} variant="outline" type="button" size={"sm"}>
         {item.name}
       </Button>
     ))}
