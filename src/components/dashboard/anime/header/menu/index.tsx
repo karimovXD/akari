@@ -9,13 +9,14 @@ const HeaderMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className={cn(`hidden md:flex items-center`)}>
+    <div className={cn(`flex items-center`)}>
       {menuData?.map((item) => (
         <MenuItem
           key={item.id}
           link={item.link}
           title={item.title}
           isActive={!!match(item.link)(pathname)}
+          icon={item.icon}
         />
       ))}
     </div>

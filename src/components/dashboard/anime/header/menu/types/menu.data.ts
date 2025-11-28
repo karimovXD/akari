@@ -1,7 +1,10 @@
-export type MenuTitles = "home" | "mangas" | "genres" | "study"
+import type { LucideIcon } from "lucide-react";
+
+export type MenuTitles = "home" | "mangas" | "genres" | "study" | "search"
 
 export interface menuDataType {
-    id: 1 | 2 | 3 | 4,
+    id: number,
     title: MenuTitles,
     link: string;
+    icon: LucideIcon;
 }

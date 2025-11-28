@@ -1,3 +1,4 @@
+import Footer from "@/components/dashboard/anime/footer";
 import Header from "@/components/dashboard/anime/header";
 import { Container } from "@/components/dashboard/anime/main/components/Container";
 
@@ -12,11 +13,7 @@ export default function RoutesLayout({
       <main>
         <Container>{children}</Container>
       </main>
-      <footer>
-        <Container>
-          <div>hello there</div>
-        </Container>
-      </footer>
+      <Footer />
     </div>
   );
 }
