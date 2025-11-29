@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
 
     &__input {
         width: 100%;
@@ -13,7 +13,6 @@
     }
 
     &__empty_content {
-        padding: 6rem 0;
         display: flex;
         align-items: center;
         text-align: center;

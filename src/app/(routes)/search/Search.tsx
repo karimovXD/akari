@@ -17,13 +17,17 @@ export const Search = () => {
   const result = searchParams.get("result") ?? "";
   const category = (searchParams.get("category") as MenuTitles) || "all";
 
-  return result === "" ? (
+  const emptyContent = (
     <div className={styles.layout__content__empty_content}>
       <TypographyH1>Search Anime & Manga</TypographyH1>
       <TypographyP>
         Enter a search term to find anime and manga titles.
       </TypographyP>
     </div>
+  );
+
+  return result === "" ? (
+    emptyContent
   ) : (
     <div className={cn(styles.search)}>
       <FilterCategoryComponent category="anime" categoryCurrentTitle={category}>

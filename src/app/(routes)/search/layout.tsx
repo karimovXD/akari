@@ -8,7 +8,7 @@ export default function RoutesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-svh max-h-full">
+    <div className="h-full flex flex-col gap-10">
       <div className={styles.layout__content}>
         <BackButton />
         <div className={styles.layout__content__input}>

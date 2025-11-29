@@ -19,7 +19,7 @@ export const SearchInput: React.FC = () => {
     router.push(
       trimmed
         ? DASHBOARD_PAGES.SEARCH.QUERY(trimmed, selectQuery)
-        : DASHBOARD_PAGES.HOME
+        : DASHBOARD_PAGES.SEARCH.ROOT
     );
   }, [query, router]);
 

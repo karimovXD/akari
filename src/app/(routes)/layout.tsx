@@ -8,10 +8,10 @@ export default function RoutesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative">
+    <div className="relative h-full flex flex-col justify-between">
       <Header />
-      <main>
-        <Container>{children}</Container>
+      <main className="flex-1">
+        <Container className="h-full">{children}</Container>
       </main>
       <Footer />
     </div>
