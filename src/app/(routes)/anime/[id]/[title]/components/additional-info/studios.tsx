@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Title } from "./Title";
 import type { Entity } from "@/types/anime/helpers/shared";
+import { WithData } from "@/utils/api/with-data";
 
 interface PropsType {
   data: Entity[] | undefined;
 }
 
-export const Studios: React.FC<PropsType> = ({ data }) => (
+const StudiosBase: React.FC<PropsType> = ({ data }) => (
   <Title ifIcon={false} title="Studios">
     {(data ?? []).map((item) => (
       <Button key={item.mal_id} variant="outline" type="button" size={"sm"}>
@@ -15,3 +16,5 @@ export const Studios: React.FC<PropsType> = ({ data }) => (
     ))}
   </Title>
 );
+
+export const Studios = WithData<Entity>(StudiosBase);
