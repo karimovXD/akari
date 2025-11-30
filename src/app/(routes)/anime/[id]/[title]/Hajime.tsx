@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import Header from "./components/header";
 import MainImage from "./components/image";
 import AdditionInfo from "./components/additional-info";
+import TabsInfo from "./components/tabs-info";
 
 interface PropsType {
   id: number;
@@ -69,6 +70,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
             />
           </div>
         </div>
+        <TabsInfo id={id} />
       </div>
     </QueryState>
   );
