@@ -1,6 +1,7 @@
 import Footer from "@/components/dashboard/anime/footer";
 import Header from "@/components/dashboard/anime/header";
 import { Container } from "@/components/dashboard/anime/main/components/Container";
+import styles from "./styles.module.scss";
 
 export default function RoutesLayout({
   children,
@@ -8,7 +9,7 @@ export default function RoutesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative h-full flex flex-col justify-between">
+    <div className={styles.layout__content}>
       <Header />
       <main className="flex-1">
         <Container className="h-full">{children}</Container>
