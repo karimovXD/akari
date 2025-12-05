@@ -27,10 +27,7 @@ export const Top = () => {
 
   return (
     <>
-      <SectionCategory
-        title="popular"
-        viewMoreLink={DASHBOARD_PAGES.ANIME.ROOT}
-      >
+      <SectionCategory title="popular">
         <QueryState isLoading={isLoading} isError={isError} data={data}>
           <div className={cn(styles.card__content__grid__content)}>
             {popularAnime}

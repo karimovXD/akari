@@ -4,12 +4,13 @@ import type { SearchAnimeResponse, SearchCharacterResponse, SearchMangaResponse 
 import type { AxiosError } from "axios";
 
 export const SearchService = {
-    async searchAnime(query: string, limit = 10): Promise<SearchAnimeResponse> {
+    async searchAnime(query: string, limit = 10, page = 1): Promise<SearchAnimeResponse> {
         try {
             const { data } = await axiosInstance.get<SearchAnimeResponse>('/anime', {
                 params: {
                     q: query,
-                    limit
+                    limit,
+                    page
                 }
             });
             return data;

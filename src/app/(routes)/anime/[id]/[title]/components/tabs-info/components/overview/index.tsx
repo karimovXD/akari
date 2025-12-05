@@ -1,25 +1,62 @@
+import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
-import { TypographyH2 } from "@/components/ui/dashboard-ui/typography/typography";
-import { useGetAnimeNews } from "@/hooks/anime/useAnime";
+import { useGetAnimeById, useGetAnimeNews } from "@/hooks/anime/useAnime";
 import React from "react";
+import NewsItem from "./NewsItem";
 
-const Overview = ({ id }: { id: number }) => {
-  const { data, isLoading, isError } = useGetAnimeNews(id);
+interface PropsType {
+  id: number;
+}
+
+const Overview: React.FC<PropsType> = ({ id }) => {
+  const {
+    data: animeNewsData,
+    isLoading: animeNewsLoading,
+    isError: animeNewsError,
+  } = useGetAnimeNews(id);
+
+  const {
+    data: animeIdData,
+    isLoading: animeIdLoading,
+    isError: animeIdError,
+  } = useGetAnimeById(id);
 
   const animeNews = React.useMemo(() => {
-    if (!data) return [];
-    return data.data.map((item, i) => (
-      <div key={item.mal_id + i * i + item.title}>
-        {item.mal_id} {item.title}
-      </div>
+    if (!animeNewsData) return [];
+    return animeNewsData.data.map((item, i) => (
+      <NewsItem
+        key={item.mal_id + i * i + item.title}
+        title={item.title}
+        author={item.author_username}
+        content={item.excerpt}
+        date={item.date}
+        link={item.url}
+      />
     ));
-  }, [data]);
+  }, [animeNewsData]);
 
   return (
-    <QueryState isLoading={isLoading} isError={isError} data={animeNews}>
-      <TypographyH2>News {id}</TypographyH2>
-      <>{animeNews}</>
-    </QueryState>
+    <div className="flex flex-col gap-4">
+      <SectionCategory title="background" withUnderline={true}>
+        <QueryState
+          isLoading={animeIdLoading}
+          isError={animeIdError}
+          data={animeIdData}
+        >
+          <>{animeIdData?.data.background}</>
+        </QueryState>
+      </SectionCategory>
+
+      <SectionCategory title="News" withUnderline={true}>
+        <QueryState
+          isLoading={animeNewsLoading}
+          isError={animeNewsError}
+          data={animeNews}
+        >
+          {animeNews}
+        </QueryState>
+      </SectionCategory>
+    </div>
   );
 };
 

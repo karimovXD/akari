@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { SearchService } from "@/services/anime/search.service";
 import type { SearchAnimeResponse, SearchMangaResponse, SearchCharacterResponse } from "@/types/anime/search";
 
-export const useSearchAnime = (query: string, limit = 10) => {
+export const useSearchAnime = (query: string, limit = 10, page: number) => {
     return useQuery<SearchAnimeResponse>({
-        queryKey: ["animeSearch", query, limit],
-        queryFn: () => SearchService.searchAnime(query, limit),
+        queryKey: ["animeSearch", query, limit, page],
+        queryFn: () => SearchService.searchAnime(query, limit, page),
         enabled: !!query,
         staleTime: 1000 * 60 * 3,
         retry: 1,

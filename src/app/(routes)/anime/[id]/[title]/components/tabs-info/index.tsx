@@ -2,8 +2,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { menuData } from "./tabs.data";
 import { EnumTabsInfoType } from "./types";
 import Overview from "./components/overview";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-const TabsInfo = ({ id }: { id: number }) => {
+interface PropsType {
+  id: number;
+}
+
+const TabsInfo: React.FC<PropsType> = ({ id }) => {
   const TabsListTrigger = menuData?.map((item) => (
     <TabsTrigger key={item.id} value={item.title} className="cursor-pointer">
       <item.icon /> {item.title}
@@ -12,7 +17,10 @@ const TabsInfo = ({ id }: { id: number }) => {
 
   return (
     <Tabs defaultValue={EnumTabsInfoType.OVERVIEW} className="w-full">
-      <TabsList className="w-full">{TabsListTrigger}</TabsList>
+      <ScrollArea className="w-auto rounded-md whitespace-nowrap">
+        <TabsList className="w-[640px] sm:w-full">{TabsListTrigger}</TabsList>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
       <TabsContent value={EnumTabsInfoType.OVERVIEW}>
         <Overview id={id} />
       </TabsContent>
