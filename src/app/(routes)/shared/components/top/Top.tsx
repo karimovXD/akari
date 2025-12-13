@@ -7,9 +7,11 @@ import { SectionCategory } from "@/components/dashboard/anime/main/components/se
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import styles from "@/app/(routes)/styles.module.scss";
 import { cn } from "@/lib/utils";
+import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Top = () => {
-  const { data, isLoading, isError } = useGetTopAnime(12, "bypopularity");
+  const [page, setPage] = React.useState(1);
+  const { data, isLoading, isError } = useGetTopAnime(24, "bypopularity", page);
 
   const popularAnime = React.useMemo(() => {
     if (!data) return [];
@@ -18,7 +20,10 @@ export const Top = () => {
         key={item.mal_id + i * i + item.title}
         image={item.images.webp?.large_image_url as string}
         title={item.title}
-        link={DASHBOARD_PAGES.ANIME.ANIME_ID(`${item.mal_id}`, `${item.title}`)}
+        link={DASHBOARD_PAGES.ANIME.ANIME_ID(
+          `${encodeURIComponent(item.mal_id)}`,
+          `${encodeURIComponent(item.title)}`
+        )}
         description={`${item.type}`}
         duration={item.duration}
       />
@@ -26,14 +31,22 @@ export const Top = () => {
   }, [data]);
 
   return (
-    <>
-      <SectionCategory title="popular">
-        <QueryState isLoading={isLoading} isError={isError} data={data}>
-          <div className={cn(styles.card__content__grid__content)}>
-            {popularAnime}
-          </div>
-        </QueryState>
-      </SectionCategory>
-    </>
+    <SectionCategory title="popular">
+      <QueryState
+        isLoading={isLoading}
+        isError={isError}
+        data={data}
+        skeletonNumber={24}
+      >
+        <div className={cn(styles.card__content__grid__content)}>
+          {popularAnime}
+        </div>
+        <PaginationNumbers
+          currentPage={page}
+          lastPage={data?.pagination?.last_visible_page!}
+          onChange={(p) => setPage(p)}
+        />
+      </QueryState>
+    </SectionCategory>
   );
 };

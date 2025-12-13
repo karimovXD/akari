@@ -7,8 +7,10 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
+  PaginationEllipsis,
 } from "@/components/ui/pagination";
 import { useMemo, useCallback } from "react";
+import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
 
 interface Props {
   currentPage: number;
@@ -49,57 +51,62 @@ export function PaginationNumbers({ currentPage, lastPage, onChange }: Props) {
     pageNumbers[pageNumbers.length - 1] < lastPage - 1;
 
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious onClick={goToPrev} />
-        </PaginationItem>
-
-        {shouldShowLeftDots && (
-          <>
-            <PaginationItem>
-              <PaginationLink onClick={handlePageClick(1)}>1</PaginationLink>
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationLink className="pointer-events-none opacity-50">
-                ...
-              </PaginationLink>
-            </PaginationItem>
-          </>
-        )}
-
-        {pageNumbers.map((page) => (
-          <PaginationItem key={page}>
-            <PaginationLink
-              isActive={page === currentPage}
-              onClick={handlePageClick(page)}
-            >
-              {page}
-            </PaginationLink>
+    <ScrollArea className="w-auto rounded-md whitespace-nowrap">
+      <Pagination className="w-auto sm:w-full">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={goToPrev}
+              disabled={currentPage === 1}
+            />
           </PaginationItem>
-        ))}
 
-        {shouldShowRightDots && (
-          <>
-            <PaginationItem>
-              <PaginationLink className="pointer-events-none opacity-50">
-                ...
+          {shouldShowLeftDots && (
+            <>
+              <PaginationItem>
+                <PaginationLink onClick={handlePageClick(1)} isActive={false}>
+                  1
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            </>
+          )}
+
+          {pageNumbers.map((page) => (
+            <PaginationItem key={page}>
+              <PaginationLink
+                isActive={page === currentPage}
+                onClick={handlePageClick(page)}
+              >
+                {page}
               </PaginationLink>
             </PaginationItem>
+          ))}
 
-            <PaginationItem>
-              <PaginationLink onClick={handlePageClick(lastPage)}>
-                {lastPage}
-              </PaginationLink>
-            </PaginationItem>
-          </>
-        )}
+          {shouldShowRightDots && (
+            <>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink onClick={handlePageClick(lastPage)}>
+                  {lastPage}
+                </PaginationLink>
+              </PaginationItem>
+            </>
+          )}
 
-        <PaginationItem>
-          <PaginationNext onClick={goToNext} />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+          <PaginationItem>
+            <PaginationNext
+              onClick={goToNext}
+              disabled={currentPage === lastPage}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+      <ScrollBar orientation="horizontal" />
+    </ScrollArea>
   );
 }

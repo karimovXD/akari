@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { AnimeService } from "@/services/anime/anime/index";
 import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse } from "@/types/anime/anime";
 
-export const useGetTopAnime = (limit = 10, filter: EnumTopAnimeFilter) => {
+export const useGetTopAnime = (limit = 10, filter: EnumTopAnimeFilter, page: number) => {
     return useQuery<TopAnimeResponse>({
-        queryKey: ["topAnime", limit],
-        queryFn: () => AnimeService.getTop(limit, filter),
+        queryKey: ["topAnime", limit, page],
+        queryFn: () => AnimeService.getTop(limit, filter, page),
         staleTime: 1000 * 60 * 3,
         retry: 1,
     });

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Spinner } from "@/components/ui/spinner";
+import SkeletonContent from "@/components/ui/dashboard-ui/skeleton";
 
 interface QueryStateProps<T> {
   isLoading: boolean;
@@ -8,14 +8,16 @@ interface QueryStateProps<T> {
   loader?: ReactNode;
   errorMessage?: ReactNode;
   children: ReactNode;
+  skeletonNumber?: number;
 }
 
 export function QueryState<T>({
   isLoading,
   isError,
   data,
-  loader = <Spinner />,
-  errorMessage = <p className="text-red-500">Ошибка при загрузке</p>,
+  skeletonNumber = 12,
+  loader = <SkeletonContent number={skeletonNumber} />,
+  errorMessage = <p className="text-red-500">Error while loading</p>,
   children,
 }: QueryStateProps<T>) {
   if (isLoading) return <>{loader}</>;

@@ -8,7 +8,7 @@ import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
 
 export const Manga: React.FC<{ result: string }> = ({ result }) => {
-  const { data, isLoading, isError } = useSearchManga(result);
+  const { data, isLoading, isError } = useSearchManga(result, 12);
 
   const mangaCards = React.useMemo(() => {
     if (!data) return [];

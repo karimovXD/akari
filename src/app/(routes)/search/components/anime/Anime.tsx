@@ -10,7 +10,7 @@ import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/Pagin
 
 export const Anime: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = React.useState(1);
-  const { data, isLoading, isError } = useSearchAnime(result, 10, page);
+  const { data, isLoading, isError } = useSearchAnime(result, 12, page);
 
   const animeCards = React.useMemo(() => {
     if (!data) return [];

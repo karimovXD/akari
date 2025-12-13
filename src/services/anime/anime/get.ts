@@ -4,10 +4,10 @@ import { SERVER_ERROR_TEXT } from '@/constants/seo.constans';
 import type { AxiosError } from "axios";
 
 export const AnimeService = {
-    async getTop(limit = 10, filter: EnumTopAnimeFilter): Promise<TopAnimeResponse> {
+    async getTop(limit = 10, filter: EnumTopAnimeFilter, page = 1): Promise<TopAnimeResponse> {
         try {
             const { data } = await axiosInstance.get<TopAnimeResponse>('/top/anime', {
-                params: { limit, filter }
+                params: { limit, filter, page }
             });
             return data;
         } catch (error) {

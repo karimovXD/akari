@@ -8,7 +8,7 @@ import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
 
 export const Characters: React.FC<{ result: string }> = ({ result }) => {
-  const { data, isLoading, isError } = useSearchCharacters(result);
+  const { data, isLoading, isError } = useSearchCharacters(result, 12);
 
   const charactersCards = React.useMemo(() => {
     if (!data) return [];
