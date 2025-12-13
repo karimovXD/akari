@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
+import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Characters: React.FC<{ result: string }> = ({ result }) => {
-  const { data, isLoading, isError } = useSearchCharacters(result, 12);
+  const [page, setPage] = React.useState(1);
+  const { data, isLoading, isError } = useSearchCharacters(result, 12, page);
 
   const charactersCards = React.useMemo(() => {
     if (!data) return [];
@@ -36,6 +38,11 @@ export const Characters: React.FC<{ result: string }> = ({ result }) => {
         <div className={cn(styles.search__grid__content)}>
           {charactersCards}
         </div>
+        <PaginationNumbers
+          currentPage={page}
+          lastPage={data?.pagination?.last_visible_page!}
+          onChange={(p) => setPage(p)}
+        />
       </QueryState>
     </SectionCategory>
   );

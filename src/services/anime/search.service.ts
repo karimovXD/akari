@@ -21,12 +21,13 @@ export const SearchService = {
         }
     },
 
-    async searchManga(query: string, limit = 10): Promise<SearchMangaResponse> {
+    async searchManga(query: string, limit = 10, page = 1): Promise<SearchMangaResponse> {
         try {
             const { data } = await axiosInstance.get<SearchMangaResponse>('/manga', {
                 params: {
                     q: query,
-                    limit
+                    limit,
+                    page
                 }
             });
             return data;
@@ -37,12 +38,13 @@ export const SearchService = {
         }
     },
 
-    async searchCharacters(query: string, limit = 10): Promise<SearchCharacterResponse> {
+    async searchCharacters(query: string, limit = 10, page = 1): Promise<SearchCharacterResponse> {
         try {
             const { data } = await axiosInstance.get<SearchCharacterResponse>('/characters', {
                 params: {
                     q: query,
-                    limit
+                    limit,
+                    page
                 }
             });
             return data;

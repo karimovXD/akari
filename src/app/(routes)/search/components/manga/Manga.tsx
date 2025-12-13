@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
+import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Manga: React.FC<{ result: string }> = ({ result }) => {
-  const { data, isLoading, isError } = useSearchManga(result, 12);
+  const [page, setPage] = React.useState(1);
+  const { data, isLoading, isError } = useSearchManga(result, 12, page);
 
   const mangaCards = React.useMemo(() => {
     if (!data) return [];
@@ -27,6 +29,11 @@ export const Manga: React.FC<{ result: string }> = ({ result }) => {
     <SectionCategory title="manga">
       <QueryState isLoading={isLoading} isError={isError} data={mangaCards}>
         <div className={cn(styles.search__grid__content)}>{mangaCards}</div>
+        <PaginationNumbers
+          currentPage={page}
+          lastPage={data?.pagination?.last_visible_page!}
+          onChange={(p) => setPage(p)}
+        />
       </QueryState>
     </SectionCategory>
   );
