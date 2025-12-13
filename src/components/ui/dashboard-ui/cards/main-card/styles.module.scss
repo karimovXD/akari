@@ -28,10 +28,18 @@
         display: flex;
         align-items: center;
         justify-content: start;
-        gap: 1;
+        gap: 0.5rem;
     }
 
     &__description {
         font-weight: 600;
+    }
+
+    &__rating {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        align-items: center;
     }
 }

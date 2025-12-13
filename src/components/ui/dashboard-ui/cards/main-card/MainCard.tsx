@@ -6,6 +6,8 @@ import {
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Star } from "lucide-react";
 
 interface PropsType {
   title: string;
@@ -13,6 +15,7 @@ interface PropsType {
   link: string;
   description: string;
   duration?: string;
+  score?: number;
 }
 
 const MainCard: React.FC<PropsType> = ({
@@ -20,6 +23,7 @@ const MainCard: React.FC<PropsType> = ({
   image,
   link,
   description,
+  score,
   duration = "",
 }) => {
   const isDurationHave = duration && (
@@ -33,6 +37,12 @@ const MainCard: React.FC<PropsType> = ({
     </>
   );
 
+  const cardRating = score && (
+    <Badge className={cn(styles.card__rating)} variant={"secondary"}>
+      <Star /> {score}
+    </Badge>
+  );
+
   return (
     <Link href={link}>
       <div
@@ -41,6 +51,7 @@ const MainCard: React.FC<PropsType> = ({
           backgroundImage: `url(${image as string})`,
         }}
       >
+        {cardRating}
         <TypographySmall className={cn(styles.card__title)}>
           {title}
         </TypographySmall>

@@ -26,6 +26,7 @@ export const Top = () => {
         )}
         description={`${item.type}`}
         duration={item.duration}
+        score={item.score}
       />
     ));
   }, [data]);

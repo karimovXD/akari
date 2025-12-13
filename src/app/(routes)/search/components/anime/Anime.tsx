@@ -22,6 +22,7 @@ export const Anime: React.FC<{ result: string }> = ({ result }) => {
         link={DASHBOARD_PAGES.ANIME.ANIME_ID(`${item.mal_id}`, `${item.title}`)}
         description={`${item.type}`}
         duration={item.duration as string}
+        score={item.score}
       />
     ));
   }, [data]);
