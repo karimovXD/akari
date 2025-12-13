@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import {
   Item,
   ItemContent,
@@ -6,6 +6,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
+import styles from "./styles.module.scss";
 
 interface AnimeItemProps {
   title: string;
@@ -14,7 +15,7 @@ interface AnimeItemProps {
 }
 
 const AnimeItem: React.FC<AnimeItemProps> = ({ title, description, logo }) => (
-  <Item size="sm" className="w-full p-2" variant="outline">
+  <Item size="sm" className={styles.anime_info__anime_item} variant="outline">
     <ItemMedia variant="image">{logo}</ItemMedia>
     <ItemContent>
       <ItemTitle className="capitalize">{title}</ItemTitle>
@@ -23,4 +24,4 @@ const AnimeItem: React.FC<AnimeItemProps> = ({ title, description, logo }) => (
   </Item>
 );
 
-export default React.memo(AnimeItem);
+export default memo(AnimeItem);

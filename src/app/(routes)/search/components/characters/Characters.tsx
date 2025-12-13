@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useMemo } from "react";
 import { useSearchCharacters } from "@/hooks/anime/useSearch";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
@@ -9,10 +9,10 @@ import styles from "../../styles.module.scss";
 import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Characters: React.FC<{ result: string }> = ({ result }) => {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useSearchCharacters(result, 12, page);
 
-  const charactersCards = React.useMemo(() => {
+  const charactersCards = useMemo(() => {
     if (!data) return [];
     return data.data.map((item, i) => (
       <MainCard

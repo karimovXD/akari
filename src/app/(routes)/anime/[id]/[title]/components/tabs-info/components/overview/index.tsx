@@ -1,7 +1,7 @@
 import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useGetAnimeById, useGetAnimeNews } from "@/hooks/anime/useAnime";
-import React from "react";
+import { useMemo } from "react";
 import NewsItem from "./NewsItem";
 
 interface PropsType {
@@ -21,7 +21,7 @@ const Overview: React.FC<PropsType> = ({ id }) => {
     isError: animeIdError,
   } = useGetAnimeById(id);
 
-  const animeNews = React.useMemo(() => {
+  const animeNews = useMemo(() => {
     if (!animeNewsData) return [];
     return animeNewsData.data.map((item, i) => (
       <NewsItem

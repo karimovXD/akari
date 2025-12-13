@@ -1,4 +1,3 @@
-import React from "react";
 import { SITE_NAME } from "@/constants/seo.constans";
 import { Container } from "../main/components/Container";
 import {

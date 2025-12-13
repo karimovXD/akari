@@ -11,6 +11,7 @@ import Header from "./components/header";
 import MainImage from "./components/image";
 import AdditionInfo from "./components/additional-info";
 import TabsInfo from "./components/tabs-info";
+import { Spinner } from "@/components/ui/spinner";
 
 interface PropsType {
   id: number;
@@ -26,8 +27,13 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
   );
 
   return (
-    <QueryState isLoading={isLoading} isError={isError} data={data}>
-      <div className="w-full flex flex-col h-auto gap-4">
+    <QueryState
+      isLoading={isLoading}
+      isError={isError}
+      data={data}
+      loader={<Spinner />}
+    >
+      <div className={styles.main__content}>
         <Header />
         <div
           className={cn(

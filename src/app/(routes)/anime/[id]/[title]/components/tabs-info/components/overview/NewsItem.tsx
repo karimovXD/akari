@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import {
   Item,
   ItemContent,
@@ -41,4 +41,4 @@ const NewsItem: React.FC<PropsType> = ({
   );
 };
 
-export default React.memo(NewsItem);
+export default memo(NewsItem);

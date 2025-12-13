@@ -1,5 +1,3 @@
-import React from "react";
-import { BigCarousel } from "@/components/dashboard/anime/main/components/carousel/big-carousel/BigCarousel";
 import type { EmblaOptionsType } from "embla-carousel";
 
 const OPTIONS: EmblaOptionsType = {};

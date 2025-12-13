@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useMemo } from "react";
 import { useSearchManga } from "@/hooks/anime/useSearch";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
@@ -9,10 +9,10 @@ import styles from "../../styles.module.scss";
 import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Manga: React.FC<{ result: string }> = ({ result }) => {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useSearchManga(result, 12, page);
 
-  const mangaCards = React.useMemo(() => {
+  const mangaCards = useMemo(() => {
     if (!data) return [];
     return data.data.map((item, i) => (
       <MainCard

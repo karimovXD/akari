@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import AnimeItem from "./AnimeItem";
 import { ICON_MAP } from "./ICON_MAP";
 import { formatNumber } from "@/utils/format/formatNumbers";
@@ -33,7 +33,7 @@ const AnimeInfo: React.FC<PropsType> = (props) => {
   }, [props]);
 
   return (
-    <div className={cn(styles.anime__info)}>
+    <div className={cn(styles.anime_info)}>
       {animeInfoData.map((item) => (
         <AnimeItem key={item.title} {...item} />
       ))}

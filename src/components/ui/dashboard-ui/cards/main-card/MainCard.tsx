@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import {
   TypographyMuted,
   TypographySmall,
@@ -55,4 +55,4 @@ const MainCard: React.FC<PropsType> = ({
   );
 };
 
-export default React.memo(MainCard);
+export default memo(MainCard);

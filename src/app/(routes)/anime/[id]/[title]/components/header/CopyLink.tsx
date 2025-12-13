@@ -2,11 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Copy, CopyCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
-import React from "react";
+import { useState } from "react";
 
 export const CopyLink = () => {
   const pathname = usePathname();
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     const fullUrl = `${window.location.origin}${pathname}`;

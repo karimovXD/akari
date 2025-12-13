@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState, useMemo } from "react";
 import { useGetTopAnime } from "@/hooks/anime/useAnime";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
@@ -10,10 +10,10 @@ import { cn } from "@/lib/utils";
 import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 
 export const Top = () => {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useGetTopAnime(24, "bypopularity", page);
 
-  const popularAnime = React.useMemo(() => {
+  const popularAnime = useMemo(() => {
     if (!data) return [];
     return data.data.map((item, i) => (
       <MainCard

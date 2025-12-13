@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState, useCallback } from "react";
 import { SearchIcon } from "lucide-react";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import { useRouter } from "next/navigation";
@@ -11,10 +11,10 @@ import type { MenuTitles } from "../types/selectMenu.data";
 
 export const SearchInput: React.FC = () => {
   const router = useRouter();
-  const [query, setQuery] = React.useState("");
-  const [selectQuery, setSelectQuery] = React.useState<MenuTitles>("all");
+  const [query, setQuery] = useState("");
+  const [selectQuery, setSelectQuery] = useState<MenuTitles>("all");
 
-  const handleSearch = React.useCallback(() => {
+  const handleSearch = useCallback(() => {
     const trimmed = query.trim();
     router.push(
       trimmed

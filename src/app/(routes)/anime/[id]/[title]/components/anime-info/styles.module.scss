@@ -1,4 +1,4 @@
-.anime__info {
+.anime_info {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 0.5rem;
@@ -9,5 +9,10 @@
 
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__anime_item {
+        width: 100%;
+        padding: 0.5rem;
     }
 }
