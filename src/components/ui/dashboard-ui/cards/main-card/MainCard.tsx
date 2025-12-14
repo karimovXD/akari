@@ -1,8 +1,5 @@
 import { memo } from "react";
-import {
-  TypographyMuted,
-  TypographySmall,
-} from "@/components/ui/dashboard-ui/typography/typography";
+import { TypographySmall } from "@/components/ui/dashboard-ui/typography/typography";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
@@ -27,20 +24,34 @@ const MainCard: React.FC<PropsType> = ({
   duration = "",
 }) => {
   const isDurationHave = duration && (
-    <>
-      <TypographyMuted className={cn(styles.card__description)}>
-        -
-      </TypographyMuted>
-      <TypographyMuted className={cn(styles.card__description)}>
-        {duration}
-      </TypographyMuted>
-    </>
+    <div
+      className={cn(
+        styles.card__badge,
+        "bg-secondary text-secondary-foreground"
+      )}
+    >
+      {duration}
+    </div>
   );
 
   const cardRating = score && (
     <Badge className={cn(styles.card__rating)} variant={"secondary"}>
       <Star /> {score}
     </Badge>
+  );
+
+  const cardAdditionalInfo = (
+    <div className={cn(styles.card__description__content)}>
+      <div
+        className={cn(
+          styles.card__badge,
+          "bg-secondary text-secondary-foreground"
+        )}
+      >
+        {description}
+      </div>
+      {isDurationHave}
+    </div>
   );
 
   return (
@@ -55,12 +66,7 @@ const MainCard: React.FC<PropsType> = ({
         <TypographySmall className={cn(styles.card__title)}>
           {title}
         </TypographySmall>
-        <div className={cn(styles.card__description__content)}>
-          <TypographyMuted className={cn(styles.card__description)}>
-            {description}
-          </TypographyMuted>
-          {isDurationHave}
-        </div>
+        {cardAdditionalInfo}
       </div>
     </Link>
   );

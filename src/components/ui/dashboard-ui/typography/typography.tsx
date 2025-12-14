@@ -118,6 +118,8 @@ export function TypographyMuted({
   className,
 }: defaultTypographyType) {
   return (
-    <p className={cn("text-muted-foreground text-sm", className)}>{children}</p>
+    <p className={cn("text-muted-foreground text-xs sm:text-sm", className)}>
+      {children}
+    </p>
   );
 }
