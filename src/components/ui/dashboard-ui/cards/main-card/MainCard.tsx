@@ -24,49 +24,35 @@ const MainCard: React.FC<PropsType> = ({
   duration = "",
 }) => {
   const isDurationHave = duration && (
-    <div
-      className={cn(
-        styles.card__badge,
-        "bg-secondary text-secondary-foreground"
-      )}
-    >
-      {duration}
-    </div>
+    <Badge variant={"overlay"}>{duration}</Badge>
   );
 
   const cardRating = score && (
-    <Badge className={cn(styles.card__rating)} variant={"secondary"}>
+    <Badge className={cn(styles.image__rating)} variant={"overlay"}>
       <Star /> {score}
     </Badge>
   );
 
   const cardAdditionalInfo = (
-    <div className={cn(styles.card__description__content)}>
-      <div
-        className={cn(
-          styles.card__badge,
-          "bg-secondary text-secondary-foreground"
-        )}
-      >
-        {description}
-      </div>
+    <div className={cn(styles.image__description__content)}>
+      <Badge variant={"overlay"}>{description}</Badge>
       {isDurationHave}
     </div>
   );
 
   return (
-    <Link href={link}>
+    <Link href={link} className={cn(styles.card)}>
       <div
-        className={cn(`${styles.card}`)}
+        className={cn(`${styles.image}`)}
         style={{
           backgroundImage: `url(${image as string})`,
         }}
       >
         {cardRating}
-        <TypographySmall className={cn(styles.card__title)}>
-          {title}
-        </TypographySmall>
         {cardAdditionalInfo}
+      </div>
+      <div className={styles.card__title_content}>
+        <TypographySmall className="line-clamp-2">{title}</TypographySmall>
       </div>
     </Link>
   );

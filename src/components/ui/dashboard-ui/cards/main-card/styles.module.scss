@@ -1,54 +1,52 @@
 .card {
-    width: 100%;
-    aspect-ratio: 1 / 1.4;
-    position: relative;
-    overflow: hidden;
-    border-radius: 0.5rem;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 0.25rem;
-    z-index: 10;
-    background-size: cover;
-    background-position: center;
-    box-shadow: inset 0 -50px 80px rgba(0, 0, 0, 0.7);
-    transition: all 0.3s ease;
     flex-direction: column;
     gap: 0.25rem;
 
+    .image {
+        width: 100%;
+        aspect-ratio: 1 / 1.4;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 0.25rem;
+        z-index: 10;
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s ease;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        &__description__content {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        &__rating {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            gap: 0.25rem;
+        }
+    }
+
+    &__title_content {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+    }
+
     &:hover {
         filter: brightness(0.7);
-    }
 
-    &__title {
-        font-weight: 800;
-        color: white;
-    }
-
-    &__description__content {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 0.25rem;
-        flex-wrap: wrap;
-    }
-
-    &__rating {
-        position: absolute;
-        top: 0.25rem;
-        right: 0.25rem;
-        display: flex;
-        align-items: center;
-        border-radius: 0.5rem;
-        padding: 0.25rem 0.5rem;
-        font-weight: 700;
-        font-size: x-small;
-    }
-
-    &__badge {
-        border-radius: 0.5rem;
-        padding: 0.25rem 0.5rem;
-        font-weight: 700;
-        font-size: x-small;
+        .card__title_content {
+            text-decoration: underline;
+        }
     }
 }

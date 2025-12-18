@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import SkeletonContent from "@/components/ui/dashboard-ui/skeleton";
+import SkeletonContent from "@/components/ui/dashboard-ui/skeleton/card-skeleton";
 
 interface QueryStateProps<T> {
   isLoading: boolean;
