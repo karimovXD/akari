@@ -1,6 +1,6 @@
 import type { EnumAnimeRating, EnumAnimeStatus, EnumAnimeType } from "./helpers/enums";
 import type { ApiResponse, ApiResponseWithoutPagination } from "./helpers/responses";
-import type { BaseDateRange, BaseMedia, Entity, Trailer, Broadcast } from "./helpers/shared";
+import type { BaseDateRange, BaseMedia, Entity, Trailer, Broadcast, BaseCharacter } from "./helpers/shared";
 
 export const EnumTopAnimeFilter = {
     Airing = "airing",
@@ -80,6 +80,16 @@ export interface AnimeNewsType {
     excerpt: string
 }
 
+export interface AnimeCharacters {
+    character: BaseCharacter;
+    role: string,
+    voice_actors: {
+        person: BaseCharacter;
+        language: string;
+    }[]
+}
+
 export type TopAnimeResponse = ApiResponse<TopAnimeType[]>;
 export type AnimeByIdResponse = ApiResponseWithoutPagination<AnimeByIdType>;
 export type AnimeNewsResponse = ApiResponse<AnimeNewsType[]>;
+export type AnimeCharactersResponse = ApiResponseWithoutPagination<AnimeCharacters[]>

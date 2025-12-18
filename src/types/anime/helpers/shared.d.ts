@@ -90,3 +90,9 @@ export interface BaseDateRange {
     to?: string;
     string?: string;
 }
+export interface BaseCharacter {
+    mal_id: number;
+    url: string;
+    name: string;
+    images: MediaImages
+}

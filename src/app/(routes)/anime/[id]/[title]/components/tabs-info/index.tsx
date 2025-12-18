@@ -3,6 +3,7 @@ import { menuData } from "./tabs.data";
 import { EnumTabsInfoType } from "./types";
 import Overview from "./components/overview";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import Characters from "./components/characters";
 
 interface PropsType {
   id: number;
@@ -25,7 +26,9 @@ const TabsInfo: React.FC<PropsType> = ({ id }) => {
         <Overview id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsInfoType.EPISODES}>epi</TabsContent>
-      <TabsContent value={EnumTabsInfoType.CHARACTERS}>charac</TabsContent>
+      <TabsContent value={EnumTabsInfoType.CHARACTERS}>
+        <Characters id={id} />
+      </TabsContent>
       <TabsContent value={EnumTabsInfoType.RELATED}>relat</TabsContent>
     </Tabs>
   );
