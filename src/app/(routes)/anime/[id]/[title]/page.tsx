@@ -19,11 +19,7 @@ export async function generateMetadata({
 const page = ({ params }: PropsType) => {
   const { id } = params;
 
-  return (
-    <div>
-      <Hajime id={Number(id)} />
-    </div>
-  );
+  return <Hajime id={Number(id)} />;
 };
 
 export default page;

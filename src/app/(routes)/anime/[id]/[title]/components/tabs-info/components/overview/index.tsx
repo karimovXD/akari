@@ -1,8 +1,8 @@
 import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useGetAnimeById, useGetAnimeNews } from "@/hooks/anime/useAnime";
-import { useMemo } from "react";
 import NewsItem from "./NewsItem";
+import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 
 interface PropsType {
   id: number;
@@ -21,26 +21,22 @@ const Overview: React.FC<PropsType> = ({ id }) => {
     isError: animeIdError,
   } = useGetAnimeById(id);
 
-  const animeNews = useMemo(() => {
-    if (!animeNewsData) return [];
-    return animeNewsData.data.map((item, i) => (
-      <NewsItem
-        key={item.mal_id + i * i + item.title}
-        title={item.title}
-        author={item.author_username}
-        content={item.excerpt}
-        date={item.date}
-        link={item.url}
-      />
-    ));
-  }, [animeNewsData]);
+  const animeNews = useQueryMappedData(animeNewsData?.data, (item, i) => (
+    <NewsItem
+      key={item.mal_id + i * i + item.title}
+      title={item.title}
+      author={item.author_username}
+      content={item.excerpt}
+      date={item.date}
+      link={item.url}
+    />
+  ));
 
   return (
     <div className="flex flex-col gap-4">
       {animeIdData?.data.background !== undefined ||
         (animeIdData?.data.background === "" && (
           <SectionCategory title="background" withUnderline={true}>
-            {animeIdData?.data.background && (
               <QueryState
                 isLoading={animeIdLoading}
                 isError={animeIdError}
@@ -48,7 +44,6 @@ const Overview: React.FC<PropsType> = ({ id }) => {
               >
                 {animeIdData?.data.background}
               </QueryState>
-            )}
           </SectionCategory>
         ))}
 

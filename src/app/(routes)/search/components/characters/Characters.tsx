@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useSearchCharacters } from "@/hooks/anime/useSearch";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
@@ -7,26 +7,24 @@ import { SectionCategory } from "@/components/dashboard/anime/main/components/se
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
 import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
+import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 
 export const Characters: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useSearchCharacters(result, 12, page);
 
-  const charactersCards = useMemo(() => {
-    if (!data) return [];
-    return data.data.map((item, i) => (
-      <MainCard
-        key={item.name + i * i + item.name}
-        image={item.images.webp?.image_url as string}
-        title={item.name}
-        link={DASHBOARD_PAGES.CHARACTERS.MANGA_ID(
-          `${item.mal_id}`,
-          `${item.name}`
-        )}
-        description={`${item.name_kanji}`}
-      />
-    ));
-  }, [data]);
+  const charactersCards = useQueryMappedData(data?.data, (item, i) => (
+    <MainCard
+      key={item.name + i * i + item.name}
+      image={item.images.webp?.image_url as string}
+      title={item.name}
+      link={DASHBOARD_PAGES.CHARACTERS.MANGA_ID(
+        `${item.mal_id}`,
+        `${item.name}`
+      )}
+      description={`${item.name_kanji}`}
+    />
+  ));
 
   return (
     <SectionCategory title="characters">

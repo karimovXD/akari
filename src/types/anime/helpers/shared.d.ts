@@ -6,12 +6,12 @@ export interface MediaImages {
         image_url: string;
         small_image_url?: string;
         large_image_url?: string;
-    };
+    } | null;
     webp?: {
         image_url: string;
         small_image_url?: string;
         large_image_url?: string;
-    };
+    } | null;
 }
 
 // Common representation for producers, studios, licensors, etc.
@@ -24,10 +24,10 @@ export interface Entity {
 
 // Trailer info (appears in anime, etc)
 export interface Trailer {
-    youtube_id?: string;
-    url?: string;
-    embed_url?: string;
-    images?: MediaImages;
+    youtube_id?: string | null;
+    url?: string | null;
+    embed_url?: string | null;
+    images?: MediaImages | null;
 }
 
 // Pagination
@@ -55,40 +55,40 @@ export interface BasePerson {
     url: string;
     images: MediaImages;
     name: string;
-    given_name?: string;
-    family_name?: string;
-    alternate_names?: string[];
-    birthday?: string;
-    favorites?: number;
-    about?: string;
+    given_name?: string | null;
+    family_name?: string | null;
+    alternate_names?: string[] | null;
+    birthday?: string | null;
+    favorites?: number | null;
+    about?: string | null;
 }
 export interface BaseMedia {
     mal_id: number;
     url: string;
     images: MediaImages;
     title: string;
-    title_english?: string;
-    title_japanese?: string;
+    title_english?: string | null;
+    title_japanese?: string | null;
     title_synonyms: string[];
-    score?: number;
-    scored_by?: number;
-    rank?: number;
-    popularity?: number;
-    members?: number;
-    favorites?: number;
-    synopsis?: string;
-    background?: string;
+    score?: number | null;
+    scored_by?: number | null;
+    rank?: number | null;
+    popularity?: number | null;
+    members?: number | null;
+    favorites?: number | null;
+    synopsis?: string | null;
+    background?: string | null;
     genres: Entity[];
 }
 export interface BaseUser {
     username: string;
     url: string;
-    images?: MediaImages;
+    images?: MediaImages | null;
 }
 export interface BaseDateRange {
-    from?: string;
-    to?: string;
-    string?: string;
+    from?: string | null;
+    to?: string | null;
+    string?: string | null;
 }
 export interface BaseCharacter {
     mal_id: number;

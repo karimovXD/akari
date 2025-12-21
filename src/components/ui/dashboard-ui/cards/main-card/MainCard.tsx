@@ -8,11 +8,11 @@ import { Star } from "lucide-react";
 
 interface PropsType {
   title: string;
-  image: string;
+  image?: string | null;
   link: string;
   description: string;
-  duration?: string;
-  score?: number;
+  duration?: string | null;
+  score?: number | null;
 }
 
 const MainCard: React.FC<PropsType> = ({
@@ -40,12 +40,14 @@ const MainCard: React.FC<PropsType> = ({
     </div>
   );
 
+  const cardImage = image ?? "/assets/logos/website-logo/akari-logo.png";
+
   return (
     <Link href={link} className={cn(styles.card)}>
       <div
         className={cn(`${styles.image}`)}
         style={{
-          backgroundImage: `url(${image as string})`,
+          backgroundImage: `url(${cardImage})`,
         }}
       >
         {cardRating}

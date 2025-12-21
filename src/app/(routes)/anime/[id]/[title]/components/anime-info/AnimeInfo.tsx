@@ -6,12 +6,12 @@ import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
 
 interface PropsType {
-  aired?: string;
+  aired?: string | null;
   duration?: string;
   episodes?: number;
-  members?: number;
-  rank?: number;
-  favorites?: number;
+  members?: number | null;
+  rank?: number | null;
+  favorites?: number | null;
 }
 
 const AnimeInfo: React.FC<PropsType> = (props) => {
