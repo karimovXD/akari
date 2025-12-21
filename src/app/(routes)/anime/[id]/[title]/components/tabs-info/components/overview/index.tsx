@@ -37,15 +37,20 @@ const Overview: React.FC<PropsType> = ({ id }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <SectionCategory title="background" withUnderline={true}>
-        <QueryState
-          isLoading={animeIdLoading}
-          isError={animeIdError}
-          data={animeIdData}
-        >
-          <>{animeIdData?.data.background}</>
-        </QueryState>
-      </SectionCategory>
+      {animeIdData?.data.background !== undefined ||
+        (animeIdData?.data.background === "" && (
+          <SectionCategory title="background" withUnderline={true}>
+            {animeIdData?.data.background && (
+              <QueryState
+                isLoading={animeIdLoading}
+                isError={animeIdError}
+                data={animeIdData}
+              >
+                {animeIdData?.data.background}
+              </QueryState>
+            )}
+          </SectionCategory>
+        ))}
 
       <SectionCategory title="News" withUnderline={true}>
         <QueryState

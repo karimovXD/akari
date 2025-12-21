@@ -1,7 +1,6 @@
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useGetAnimeCharacters } from "@/hooks/anime/useAnime";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
-import { Spinner } from "@/components/ui/spinner";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
 import styles from "@/app/(routes)/styles.module.scss";
 import { cn } from "@/lib/utils";
@@ -24,18 +23,11 @@ const Characters: React.FC<PropsType> = ({ id }) => {
   ));
 
   return (
-    <div>
-      <QueryState
-        isLoading={isLoading}
-        isError={isError}
-        data={data}
-        loader={<Spinner />}
-      >
+      <QueryState isLoading={isLoading} isError={isError} data={data}>
         <div className={cn(styles.card__content__grid__content)}>
           {animeCharacters}
         </div>
       </QueryState>
-    </div>
   );
 };
 

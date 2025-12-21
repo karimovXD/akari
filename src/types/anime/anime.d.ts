@@ -89,7 +89,21 @@ export interface AnimeCharacters {
     }[]
 }
 
+export interface AnimeEpisodes {
+    mal_id: number,
+    url: string | null,
+    title: string,
+    title_japanese: string | null,
+    title_romanji: string | null,
+    aired: string | null,
+    score: null | number,
+    filler: boolean,
+    recap: boolean,
+    forum_url: string | null;
+}
+
 export type TopAnimeResponse = ApiResponse<TopAnimeType[]>;
-export type AnimeByIdResponse = ApiResponseWithoutPagination<AnimeByIdType>;
 export type AnimeNewsResponse = ApiResponse<AnimeNewsType[]>;
+export type AnimeEpisodesResponse = ApiResponse<AnimeEpisodes[]>;
 export type AnimeCharactersResponse = ApiResponseWithoutPagination<AnimeCharacters[]>
+export type AnimeByIdResponse = ApiResponseWithoutPagination<AnimeByIdType>;
