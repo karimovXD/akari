@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/item";
 import Link from "next/link";
 import { format } from "date-fns";
+import styles from "./styles.module.scss";
 
 interface PropsType {
   title: string;
@@ -30,7 +31,7 @@ const NewsItem: React.FC<PropsType> = ({
       <Link href={link} target="_blank" rel="noopener noreferrer">
         <ItemContent>
           <ItemTitle>{title}</ItemTitle>
-          <div className="flex items-center justify-between">
+          <div className={styles.item__description_content}>
             <ItemDescription>{newsDate}</ItemDescription>
             <ItemDescription>By {author}</ItemDescription>
           </div>

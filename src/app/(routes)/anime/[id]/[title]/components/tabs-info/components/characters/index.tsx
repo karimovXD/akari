@@ -23,11 +23,11 @@ const Characters: React.FC<PropsType> = ({ id }) => {
   ));
 
   return (
-      <QueryState isLoading={isLoading} isError={isError} data={data}>
-        <div className={cn(styles.card__content__grid__content)}>
-          {animeCharacters}
-        </div>
-      </QueryState>
+    <QueryState isLoading={isLoading} isError={isError} data={data}>
+      <div className={cn(styles.card__content__grid__content)}>
+        {animeCharacters}
+      </div>
+    </QueryState>
   );
 };
 

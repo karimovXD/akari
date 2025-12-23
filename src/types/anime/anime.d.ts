@@ -102,8 +102,14 @@ export interface AnimeEpisodes {
     forum_url: string | null;
 }
 
+export interface AnimeRelations {
+    relation: string;
+    entry: Entity[]
+}
+
 export type TopAnimeResponse = ApiResponse<TopAnimeType[]>;
 export type AnimeNewsResponse = ApiResponse<AnimeNewsType[]>;
 export type AnimeEpisodesResponse = ApiResponse<AnimeEpisodes[]>;
 export type AnimeCharactersResponse = ApiResponseWithoutPagination<AnimeCharacters[]>
+export type AnimeRelationsResponse = ApiResponseWithoutPagination<AnimeRelations[]>;
 export type AnimeByIdResponse = ApiResponseWithoutPagination<AnimeByIdType>;

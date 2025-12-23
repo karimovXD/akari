@@ -1,8 +1,9 @@
 import { SectionCategory } from "@/components/dashboard/anime/main/components/section-category/SectionCategory";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useGetAnimeById, useGetAnimeNews } from "@/hooks/anime/useAnime";
-import NewsItem from "./NewsItem";
+import NewsItem from "./Item";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
+import styles from "./styles.module.scss";
 
 interface PropsType {
   id: number;
@@ -33,17 +34,17 @@ const Overview: React.FC<PropsType> = ({ id }) => {
   ));
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={styles.overview__content}>
       {animeIdData?.data.background !== undefined ||
         (animeIdData?.data.background === "" && (
           <SectionCategory title="background" withUnderline={true}>
-              <QueryState
-                isLoading={animeIdLoading}
-                isError={animeIdError}
-                data={animeIdData}
-              >
-                {animeIdData?.data.background}
-              </QueryState>
+            <QueryState
+              isLoading={animeIdLoading}
+              isError={animeIdError}
+              data={animeIdData}
+            >
+              {animeIdData?.data.background}
+            </QueryState>
           </SectionCategory>
         ))}
 

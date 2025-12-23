@@ -5,6 +5,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Overview from "./components/overview";
 import Characters from "./components/characters";
 import Episodes from "./components/episodes/index";
+import Related from "./components/related";
 
 interface PropsType {
   id: number;
@@ -32,7 +33,9 @@ const TabsInfo: React.FC<PropsType> = ({ id }) => {
       <TabsContent value={EnumTabsInfoType.CHARACTERS}>
         <Characters id={id} />
       </TabsContent>
-      <TabsContent value={EnumTabsInfoType.RELATED}>relat</TabsContent>
+      <TabsContent value={EnumTabsInfoType.RELATED}>
+        <Related id={id} />
+      </TabsContent>
     </Tabs>
   );
 };

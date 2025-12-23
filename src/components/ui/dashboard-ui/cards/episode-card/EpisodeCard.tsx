@@ -1,15 +1,13 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import {
   TypographyLarge,
   TypographyMuted,
 } from "@/components/ui/dashboard-ui/typography/typography";
-import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 import { memo } from "react";
 import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
+import { ViewMoreButton } from "../../buttons/ViewMoreButton";
 
 interface PropsType {
   title: string;
@@ -33,13 +31,7 @@ const EpisodeCard: React.FC<PropsType> = ({
   const episodeJapaneseTitle = japanese_title && (
     <TypographyMuted className="line-clamp-1">{japanese_title}</TypographyMuted>
   );
-  const episodeUrl = url && (
-    <Button variant={"secondary"} size={"sm"} asChild>
-      <Link href={url}>
-        View More <ExternalLink />
-      </Link>
-    </Button>
-  );
+  const episodeUrl = url && <ViewMoreButton url={url} />;
 
   return (
     <div className={cn(styles.card, className)}>
