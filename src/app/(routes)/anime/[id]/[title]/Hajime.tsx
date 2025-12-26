@@ -41,10 +41,9 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
           )}
         >
           <MainImage
-            large_image_url={data?.data?.images.webp?.large_image_url as string}
-            title={data?.data.title as string}
-            anime_list_id={data?.data.url as string}
-            embed_url={data?.data.trailer?.embed_url as string}
+            large_image_url={data?.data?.images.webp?.large_image_url}
+            title={data?.data.title}
+            anime_list_id={data?.data.url}
           />
           <div className={cn(styles.anime__content__article)}>
             <AnimeTitles
