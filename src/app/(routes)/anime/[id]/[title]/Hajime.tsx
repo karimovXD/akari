@@ -12,6 +12,7 @@ import MainImage from "./components/image";
 import AdditionInfo from "./components/additional-info";
 import TabsInfo from "./components/tabs-info";
 import { Spinner } from "@/components/ui/spinner";
+import AnimeTrailerViewer from "./components/trailer/index";
 
 interface PropsType {
   id: number;
@@ -73,6 +74,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
               themes={data?.data.themes}
               demographics={data?.data.demographics}
             />
+            <AnimeTrailerViewer id={id} />
           </div>
         </div>
         <TabsInfo id={id} />

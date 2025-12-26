@@ -6,6 +6,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
+import { memo } from "react";
 
 interface PropsType {
   title: string;
@@ -13,7 +14,7 @@ interface PropsType {
   url: string;
 }
 
-export const RelatedItem: React.FC<PropsType> = ({ title, type, url }) => (
+const RelatedItem: React.FC<PropsType> = ({ title, type, url }) => (
   <Item variant="outline">
     <ItemContent>
       <ItemTitle>{title}</ItemTitle>
@@ -24,3 +25,5 @@ export const RelatedItem: React.FC<PropsType> = ({ title, type, url }) => (
     </ItemActions>
   </Item>
 );
+
+export default memo(RelatedItem);

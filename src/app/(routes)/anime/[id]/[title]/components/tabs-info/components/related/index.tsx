@@ -3,7 +3,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetAnimeRelations } from "@/hooks/anime/useAnime";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
-import { RelatedItem } from "./Item";
+import RelatedItem from "./Item";
 import { Spinner } from "@/components/ui/spinner";
 import styles from "./styles.module.scss";
 
