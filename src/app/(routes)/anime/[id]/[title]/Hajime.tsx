@@ -13,6 +13,7 @@ import AdditionInfo from "./components/additional-info";
 import TabsInfo from "./components/tabs-info";
 import { Spinner } from "@/components/ui/spinner";
 import AnimeTrailerViewer from "./components/trailer/index";
+import ExternalLinks from "./components/external-links";
 
 interface PropsType {
   id: number;
@@ -75,6 +76,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
               demographics={data?.data.demographics}
             />
             <AnimeTrailerViewer id={id} />
+            <ExternalLinks id={id} />
           </div>
         </div>
         <TabsInfo id={id} />

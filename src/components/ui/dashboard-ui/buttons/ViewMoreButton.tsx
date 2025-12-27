@@ -7,16 +7,20 @@ interface PropsType {
   title?: string;
   url: string;
   className?: string;
+  size?: "sm" | "lg" | "default";
+  variant?: "default" | "secondary" | "outline" | "ghost";
 }
 
 export const ViewMoreButton: React.FC<PropsType> = ({
   url,
   title = "View More",
   className,
+  size = "sm",
+  variant = "secondary",
 }) => (
   <Button
-    variant={"secondary"}
-    size={"sm"}
+    variant={variant}
+    size={size}
     asChild
     type="button"
     className={cn(className)}

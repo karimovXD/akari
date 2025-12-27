@@ -133,6 +133,11 @@ export interface AnimeVideos {
     }[];
 }
 
+export interface AnimeExternal {
+    name: string;
+    url: string;
+}
+
 export type TopAnimeResponse = ApiResponse<TopAnimeType[]>;
 export type AnimeNewsResponse = ApiResponse<AnimeNewsType[]>;
 export type AnimeEpisodesResponse = ApiResponse<AnimeEpisodes[]>;
@@ -140,3 +145,4 @@ export type AnimeCharactersResponse = ApiResponseWithoutPagination<AnimeCharacte
 export type AnimeRelationsResponse = ApiResponseWithoutPagination<AnimeRelations[]>;
 export type AnimeByIdResponse = ApiResponseWithoutPagination<AnimeByIdType>;
 export type AnimeVideosResponse = ApiResponseWithoutPagination<AnimeVideos>;
+export type AnimeExternalResponse = ApiResponseWithoutPagination<AnimeExternal[]>;

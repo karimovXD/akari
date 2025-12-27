@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { AnimeService } from "@/services/anime/anime/index";
-import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse, AnimeCharactersResponse, AnimeEpisodesResponse, AnimeRelationsResponse, AnimeVideosResponse } from "@/types/anime/anime";
+import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse, AnimeCharactersResponse, AnimeEpisodesResponse, AnimeRelationsResponse, AnimeVideosResponse, AnimeExternalResponse } from "@/types/anime/anime";
 
 export const useGetTopAnime = (limit = 10, filter: EnumTopAnimeFilter, page: number) => {
     return useQuery<TopAnimeResponse>({
@@ -60,6 +60,15 @@ export const useGetAnimeVideos = (id: number) => {
     return useQuery<AnimeVideosResponse>({
         queryKey: ["animeVideos", id],
         queryFn: () => AnimeService.getAnimeVideos(id),
+        staleTime: 1000 * 60 * 3,
+        retry: 1
+    })
+}
+
+export const useGetAnimeExternal = (id: number) => {
+    return useQuery<AnimeExternalResponse>({
+        queryKey: ["animeExternal", id],
+        queryFn: () => AnimeService.getAnimeExternal(id),
         staleTime: 1000 * 60 * 3,
         retry: 1
     })
