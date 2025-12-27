@@ -73,3 +73,12 @@ export const useGetAnimeExternal = (id: number) => {
         retry: 1
     })
 }
+
+export const useGetAnimeStreaming = (id: number) => {
+    return useQuery<AnimeExternalResponse>({
+        queryKey: ["animeStreaming", id],
+        queryFn: () => AnimeService.getAnimeStreaming(id),
+        staleTime: 1000 * 60 * 3,
+        retry: 1
+    })
+}

@@ -14,8 +14,12 @@ const ExternalLinks = ({ id }: { id: number }) => {
   const { data, isLoading, isError } = useGetAnimeExternal(id);
 
   const animeExternal = useQueryMappedData(data?.data, (item, i) => (
-    <ExternalItem url={item.url} title={item.name} />
+    <ExternalItem url={item.url} title={item.name} key={item.name + item.url} />
   ));
+
+  if (data?.data.length === 0) {
+    return null;
+  }
 
   return (
     <QueryState data={data} isLoading={isLoading} isError={isError}>
@@ -24,7 +28,9 @@ const ExternalLinks = ({ id }: { id: number }) => {
           <CardTitle>External Links</CardTitle>
           <CardDescription>外部リンク</CardDescription>
         </CardHeader>
-        <CardContent className="bg-secondary py-4 flex gap-4 flex-wrap">{animeExternal}</CardContent>
+        <CardContent className="bg-secondary py-4 flex gap-4 flex-wrap">
+          {animeExternal}
+        </CardContent>
       </Card>
     </QueryState>
   );

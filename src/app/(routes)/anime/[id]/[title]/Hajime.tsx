@@ -14,6 +14,7 @@ import TabsInfo from "./components/tabs-info";
 import { Spinner } from "@/components/ui/spinner";
 import AnimeTrailerViewer from "./components/trailer/index";
 import ExternalLinks from "./components/external-links";
+import WhereToWatch from "./components/where-to-watch";
 
 interface PropsType {
   id: number;
@@ -46,6 +47,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
             large_image_url={data?.data?.images.webp?.large_image_url}
             title={data?.data.title}
             anime_list_id={data?.data.url}
+            id={id}
           />
           <div className={cn(styles.anime__content__article)}>
             <AnimeTitles

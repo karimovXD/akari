@@ -87,5 +87,15 @@ export const AnimeService = {
             console.log(SERVER_ERROR_TEXT("anime external"), err.message);
             throw err
         }
-    }
+    },
+    async getAnimeStreaming(id: number): Promise<AnimeExternalResponse> {
+        try {
+            const res = await axiosInstance.get<AnimeExternalResponse>(`/anime/${id}/streaming`);
+            return res.data
+        } catch (error) {
+            const err = error as AxiosError;
+            console.log(SERVER_ERROR_TEXT("anime streaming"), err.message);
+            throw err
+        }
+    },
 }

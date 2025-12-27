@@ -1,3 +1,4 @@
+import WhereToWatch from "../where-to-watch";
 import { AnimeImage } from "./AnimeImage";
 import { Visit } from "./Visit";
 
@@ -5,12 +6,14 @@ interface PropsType {
   large_image_url?: string;
   title?: string;
   anime_list_id?: string;
+  id: number;
 }
 
 const MainImage: React.FC<PropsType> = ({
   large_image_url,
   title,
   anime_list_id,
+  id,
 }) => {
   const hasImageData = large_image_url && title;
 
@@ -23,6 +26,7 @@ const MainImage: React.FC<PropsType> = ({
           <AnimeImage large_image_url={large_image_url} title={title} />
         )}
         {animeListId}
+        <WhereToWatch id={id} />
       </div>
     </div>
   );
