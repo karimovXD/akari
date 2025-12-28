@@ -4,6 +4,8 @@ import { useGetAnimeById, useGetAnimeNews } from "@/hooks/anime/useAnime";
 import NewsItem from "./Item";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import styles from "./styles.module.scss";
+import type { AnimeNewsType } from "@/types/anime/anime";
+import { useCallback } from "react";
 
 interface PropsType {
   id: number;
@@ -22,16 +24,21 @@ const Overview: React.FC<PropsType> = ({ id }) => {
     isError: animeIdError,
   } = useGetAnimeById(id);
 
-  const animeNews = useQueryMappedData(animeNewsData?.data, (item, i) => (
-    <NewsItem
-      key={item.mal_id + i * i + item.title}
-      title={item.title}
-      author={item.author_username}
-      content={item.excerpt}
-      date={item.date}
-      link={item.url}
-    />
-  ));
+  const mapAnimeNews = useCallback(
+    (item: AnimeNewsType) => (
+      <NewsItem
+        key={item.mal_id + item.title}
+        title={item.title}
+        author={item.author_username}
+        content={item.excerpt}
+        date={item.date}
+        link={item.url}
+      />
+    ),
+    []
+  );
+
+  const animeNews = useQueryMappedData(animeNewsData?.data, mapAnimeNews);
 
   return (
     <div className={styles.overview__content}>

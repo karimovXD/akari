@@ -4,6 +4,8 @@ import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
 import styles from "@/app/(routes)/styles.module.scss";
 import { cn } from "@/lib/utils";
+import type { AnimeCharacters } from "@/types/anime/anime";
+import { useCallback } from "react";
 
 interface PropsType {
   id: number;
@@ -12,15 +14,20 @@ interface PropsType {
 const Characters: React.FC<PropsType> = ({ id }) => {
   const { data, isLoading, isError } = useGetAnimeCharacters(id);
 
-  const animeCharacters = useQueryMappedData(data?.data, (item, i) => (
-    <MainCard
-      description={item.role}
-      image={item.character.images.webp?.image_url as string}
-      title={item.character.name}
-      link={item.character.url}
-      key={item.character.mal_id + i * i + item.character.name}
-    />
-  ));
+  const animeCharactersMap = useCallback(
+    (item: AnimeCharacters) => (
+      <MainCard
+        description={item.role}
+        image={item.character.images.webp?.image_url as string}
+        title={item.character.name}
+        link={item.character.url}
+        key={item.character.mal_id + item.character.name}
+      />
+    ),
+    []
+  );
+
+  const animeCharacters = useQueryMappedData(data?.data, animeCharactersMap);
 
   return (
     <QueryState isLoading={isLoading} isError={isError} data={data}>

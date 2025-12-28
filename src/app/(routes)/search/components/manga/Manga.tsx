@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useSearchManga } from "@/hooks/anime/useSearch";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import MainCard from "@/components/ui/dashboard-ui/cards/main-card/MainCard";
@@ -8,21 +8,27 @@ import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import styles from "../../styles.module.scss";
 import { PaginationNumbers } from "@/components/ui/dashboard-ui/pagination/PaginationBlock";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
+import type { SearchMangaType } from "@/types/anime/search";
 
 export const Manga: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useSearchManga(result, 12, page);
 
-  const mangaCards = useQueryMappedData(data?.data, (item, i) => (
-    <MainCard
-      key={item.mal_id + i * i + item.title}
-      image={item.images.webp?.large_image_url as string}
-      title={item.title}
-      link={DASHBOARD_PAGES.MANGA.MANGA_ID(`${item.mal_id}`, `${item.title}`)}
-      description={`${item.type}`}
-      score={item.score}
-    />
-  ));
+  const mapMangaCards = useCallback(
+    (item: SearchMangaType) => (
+      <MainCard
+        key={item.mal_id + item.title}
+        image={item.images.webp?.large_image_url as string}
+        title={item.title}
+        link={DASHBOARD_PAGES.MANGA.MANGA_ID(`${item.mal_id}`, `${item.title}`)}
+        description={`${item.type}`}
+        score={item.score}
+      />
+    ),
+    []
+  );
+
+  const mangaCards = useQueryMappedData(data?.data, mapMangaCards);
 
   return (
     <SectionCategory title="manga">

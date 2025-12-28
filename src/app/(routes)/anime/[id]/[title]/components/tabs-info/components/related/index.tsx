@@ -6,36 +6,53 @@ import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import RelatedItem from "./Item";
 import { Spinner } from "@/components/ui/spinner";
 import styles from "./styles.module.scss";
+import type { AnimeRelations } from "@/types/anime/anime";
+import { useCallback } from "react";
 
 const Related = ({ id }: { id: number }) => {
   const { data, isLoading, isError } = useGetAnimeRelations(id);
 
-  const animeRelations = useQueryMappedData(data?.data, (item) => (
-    <TabsTrigger
-      key={item.relation}
-      value={item.relation}
-      className="cursor-pointer"
-    >
-      {item.relation}
-    </TabsTrigger>
-  ));
+  const mapAnimeRelations = useCallback(
+    (item: AnimeRelations) => (
+      <TabsTrigger
+        key={item.relation}
+        value={item.relation}
+        className="cursor-pointer"
+      >
+        {item.relation}
+      </TabsTrigger>
+    ),
+    []
+  );
+  const mapRelationsContent = useCallback(
+    (item: AnimeRelations) => (
+      <TabsContent
+        key={item.relation}
+        value={item.relation}
+        className={styles.tabs__content}
+      >
+        {item.entry.map((item) => (
+          <RelatedItem
+            title={item.name}
+            type={item.type}
+            url={item.url}
+            key={item.name + item.mal_id}
+          />
+        ))}
+      </TabsContent>
+    ),
+    []
+  );
 
-  const animeRelationsContent = useQueryMappedData(data?.data, (item) => (
-    <TabsContent
-      key={item.relation}
-      value={item.relation}
-      className={styles.tabs__content}
-    >
-      {item.entry.map((item) => (
-        <RelatedItem
-          title={item.name}
-          type={item.type}
-          url={item.url}
-          key={item.name + item.mal_id}
-        />
-      ))}
-    </TabsContent>
-  ));
+  const animeRelations = useQueryMappedData(data?.data, mapAnimeRelations);
+  const animeRelationsContent = useQueryMappedData(
+    data?.data,
+    mapRelationsContent
+  );
+
+  if (!data?.data?.length) {
+    return null;
+  }
 
   return (
     <QueryState

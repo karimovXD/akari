@@ -10,5 +10,3 @@ export function useQueryMappedData<T>(
     return data?.map(stableMapFn) ?? [];
   }, [data, stableMapFn]);
 }
-
-

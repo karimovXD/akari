@@ -9,20 +9,36 @@ import { ExternalItem } from "./Item";
 import { useGetAnimeExternal } from "@/hooks/anime/useAnime";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
+import { useCallback } from "react";
+import type { AnimeExternal } from "@/types/anime/anime";
 
 const ExternalLinks = ({ id }: { id: number }) => {
   const { data, isLoading, isError } = useGetAnimeExternal(id);
 
-  const animeExternal = useQueryMappedData(data?.data, (item, i) => (
-    <ExternalItem url={item.url} title={item.name} key={item.name + item.url} />
-  ));
+  const mapExternalLinks = useCallback(
+    (item: AnimeExternal) => (
+      <ExternalItem
+        url={item.url}
+        title={item.name}
+        key={item.name + item.url}
+      />
+    ),
+    []
+  );
+
+  const animeExternal = useQueryMappedData(data?.data, mapExternalLinks);
 
   if (data?.data.length === 0) {
     return null;
   }
 
   return (
-    <QueryState data={data} isLoading={isLoading} isError={isError} loader="loading">
+    <QueryState
+      data={data}
+      isLoading={isLoading}
+      isError={isError}
+      loader="loading"
+    >
       <Card>
         <CardHeader>
           <CardTitle>External Links</CardTitle>

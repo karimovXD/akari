@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useGetAnimeEpisodes } from "@/hooks/anime/useAnime";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import { QueryState } from "@/components/dashboard/anime/QueryState";
@@ -7,22 +7,28 @@ import EpisodeCard from "@/components/ui/dashboard-ui/cards/episode-card/Episode
 import styles from "./styles.module.scss";
 import CustomSkeleton from "@/components/ui/dashboard-ui/skeleton/custom-skeleton";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { AnimeEpisodes } from "@/types/anime/anime";
 
 const Episodes = ({ id }: { id: number }) => {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError } = useGetAnimeEpisodes(id, page);
 
-  const animeEpisodes = useQueryMappedData(data?.data, (item, i) => (
-    <EpisodeCard
-      key={item.mal_id + i * i + item.title}
-      title={item.title}
-      aired={item.aired}
-      japanese_title={item.title_japanese}
-      score={item.score}
-      url={item.url}
-      className={"h-auto aspect-[1/0.5]"}
-    />
-  ));
+  const animeEpisodesMap = useCallback(
+    (item: AnimeEpisodes) => (
+      <EpisodeCard
+        key={item.mal_id + item.title}
+        title={item.title}
+        aired={item.aired}
+        japanese_title={item.title_japanese}
+        score={item.score}
+        url={item.url}
+        className={"h-auto aspect-[1/0.5]"}
+      />
+    ),
+    []
+  );
+
+  const animeEpisodes = useQueryMappedData(data?.data, animeEpisodesMap);
 
   if (data?.data.length === 0) {
     return null;

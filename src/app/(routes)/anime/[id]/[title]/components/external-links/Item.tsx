@@ -7,13 +7,7 @@ interface PropsType {
 }
 
 export const ExternalItem = memo<PropsType>(({ title, url }) => (
-  <ViewMoreButton
-    url={url}
-    title={title}
-    className="border"
-    size="lg"
-    variant="outline"
-  />
+  <ViewMoreButton url={url} title={title} size="lg" variant="outline" />
 ));
 
 ExternalItem.displayName = "ExternalItem";
