@@ -22,7 +22,7 @@ const ExternalLinks = ({ id }: { id: number }) => {
   }
 
   return (
-    <QueryState data={data} isLoading={isLoading} isError={isError}>
+    <QueryState data={data} isLoading={isLoading} isError={isError} loader="loading">
       <Card>
         <CardHeader>
           <CardTitle>External Links</CardTitle>

@@ -48,15 +48,19 @@ const Overview: React.FC<PropsType> = ({ id }) => {
           </SectionCategory>
         ))}
 
-      <SectionCategory title="News" withUnderline={true}>
-        <QueryState
-          isLoading={animeNewsLoading}
-          isError={animeNewsError}
-          data={animeNews}
-        >
-          {animeNews}
-        </QueryState>
-      </SectionCategory>
+      {animeNewsData?.data.length === 0 ? (
+        ""
+      ) : (
+        <SectionCategory title="News" withUnderline={true}>
+          <QueryState
+            isLoading={animeNewsLoading}
+            isError={animeNewsError}
+            data={animeNews}
+          >
+            {animeNews}
+          </QueryState>
+        </SectionCategory>
+      )}
     </div>
   );
 };

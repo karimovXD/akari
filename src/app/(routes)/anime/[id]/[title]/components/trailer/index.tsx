@@ -13,7 +13,12 @@ const AnimeTrailerViewer = ({ id }: Props) => {
   const firstTrailer = promo[0]?.trailer;
 
   return (
-    <QueryState isLoading={isLoading} isError={isError} data={data}>
+    <QueryState
+      isLoading={isLoading}
+      isError={isError}
+      data={data}
+      loader="loading"
+    >
       {firstTrailer?.embed_url ? (
         <AnimeVideoPlayer
           embedUrl={firstTrailer.embed_url}

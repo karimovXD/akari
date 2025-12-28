@@ -24,7 +24,13 @@ const Episodes = ({ id }: { id: number }) => {
     />
   ));
 
-  return (
+  if (data?.data.length === 0) {
+    return null;
+  }
+
+  return data?.data.length === 0 ? (
+    <div>nothing</div>
+  ) : (
     <QueryState
       isLoading={isLoading}
       isError={isError}
