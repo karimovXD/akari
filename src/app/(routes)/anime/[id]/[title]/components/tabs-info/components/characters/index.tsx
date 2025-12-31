@@ -12,7 +12,7 @@ interface PropsType {
 }
 
 const Characters: React.FC<PropsType> = ({ id }) => {
-  const { data, isLoading, isError } = useGetAnimeCharacters(id);
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeCharacters(id);
 
   const animeCharactersMap = useCallback(
     (item: AnimeCharacters) => (
@@ -30,7 +30,7 @@ const Characters: React.FC<PropsType> = ({ id }) => {
   const animeCharacters = useQueryMappedData(data?.data, animeCharactersMap);
 
   return (
-    <QueryState isLoading={isLoading} isError={isError} data={data}>
+    <QueryState isLoading={isLoading} isError={isError} data={data} onRetry={refetch} isRetrying={isFetching}>
       <div className={cn(styles.card__content__grid__content)}>
         {animeCharacters}
       </div>

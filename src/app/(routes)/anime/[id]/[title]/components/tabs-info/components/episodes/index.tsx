@@ -11,7 +11,7 @@ import type { AnimeEpisodes } from "@/types/anime/anime";
 
 const Episodes = ({ id }: { id: number }) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useGetAnimeEpisodes(id, page);
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeEpisodes(id, page);
 
   const animeEpisodesMap = useCallback(
     (item: AnimeEpisodes) => (
@@ -48,6 +48,8 @@ const Episodes = ({ id }: { id: number }) => {
           className={styles.grid__content}
         />
       }
+      isRetrying={isFetching}
+      onRetry={refetch}
     >
       <div className={styles.episode__content}>
         <div className={styles.grid__content}>{animeEpisodes}</div>

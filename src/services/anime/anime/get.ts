@@ -1,4 +1,4 @@
-import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse, AnimeCharactersResponse, AnimeEpisodesResponse, AnimeRelationsResponse, AnimeVideosResponse, AnimeExternalResponse } from "@/types/anime/anime";
+import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse, AnimeCharactersResponse, AnimeEpisodesResponse, AnimeRelationsResponse, AnimeVideosResponse, AnimeExternalResponse, AnimeRecommendationsResponse } from "@/types/anime/anime";
 import { axiosInstance } from '@/api/axios.instance'
 import { SERVER_ERROR_TEXT } from '@/constants/seo.constans';
 import type { AxiosError } from "axios";
@@ -98,4 +98,14 @@ export const AnimeService = {
             throw err
         }
     },
+    async getAnimeRecommendations(id: number): Promise<AnimeRecommendationsResponse> {
+        try {
+            const res = await axiosInstance.get<AnimeRecommendationsResponse>(`/anime/${id}/recommendations`);
+            return res.data;
+        } catch (error) {
+            const err = error as AxiosError;
+            console.log(SERVER_ERROR_TEXT("anime streaming"), err.message);
+            throw err
+        }
+    }
 }

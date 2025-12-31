@@ -14,14 +14,16 @@ import TabsInfo from "./components/tabs-info";
 import { Spinner } from "@/components/ui/spinner";
 import AnimeTrailerViewer from "./components/trailer/index";
 import ExternalLinks from "./components/external-links";
-import WhereToWatch from "./components/where-to-watch";
+import Recommendations from "./components/recommendations";
 
 interface PropsType {
   id: number;
 }
 
 export const Hajime: React.FC<PropsType> = ({ id }) => {
-  const { data, isLoading, isError } = useGetAnimeById(Number(id));
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeById(
+    Number(id)
+  );
 
   const aboutAnime = (
     <div>
@@ -35,6 +37,8 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
       isError={isError}
       data={data}
       loader={<Spinner />}
+      onRetry={refetch}
+      isRetrying={isFetching}
     >
       <div className={styles.main__content}>
         <Header />
@@ -81,6 +85,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
             <ExternalLinks id={id} />
           </div>
         </div>
+        <Recommendations id={id} />
         <TabsInfo id={id} />
       </div>
     </QueryState>

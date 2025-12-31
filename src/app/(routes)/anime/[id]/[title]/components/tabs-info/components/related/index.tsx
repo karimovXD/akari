@@ -10,7 +10,7 @@ import type { AnimeRelations } from "@/types/anime/anime";
 import { useCallback } from "react";
 
 const Related = ({ id }: { id: number }) => {
-  const { data, isLoading, isError } = useGetAnimeRelations(id);
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeRelations(id);
 
   const mapAnimeRelations = useCallback(
     (item: AnimeRelations) => (
@@ -60,6 +60,8 @@ const Related = ({ id }: { id: number }) => {
       isError={isError}
       data={data}
       loader={<Spinner />}
+      onRetry={refetch}
+      isRetrying={isFetching}
     >
       <Tabs defaultValue={data?.data[0].relation}>
         <ScrollArea className="w-auto rounded-md whitespace-nowrap">

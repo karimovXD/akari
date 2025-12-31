@@ -12,7 +12,11 @@ import type { SearchAnimeType } from "@/types/anime/search";
 
 export const Anime: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useSearchAnime(result, 12, page);
+  const { data, isLoading, isError, refetch, isFetching } = useSearchAnime(
+    result,
+    12,
+    page
+  );
 
   const mapAnimeCards = useCallback(
     (item: SearchAnimeType) => (
@@ -33,7 +37,13 @@ export const Anime: React.FC<{ result: string }> = ({ result }) => {
 
   return (
     <SectionCategory title="anime">
-      <QueryState isLoading={isLoading} isError={isError} data={animeCards}>
+      <QueryState
+        isLoading={isLoading}
+        isError={isError}
+        data={animeCards}
+        isRetrying={isFetching}
+        onRetry={refetch}
+      >
         <div className={cn(styles.search__grid__content)}>{animeCards}</div>
         <PaginationNumbers
           currentPage={page}

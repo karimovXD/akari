@@ -12,7 +12,7 @@ import type { SearchCharacterType } from "@/types/anime/search";
 
 export const Characters: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useSearchCharacters(result, 12, page);
+  const { data, isLoading, isError, refetch, isFetching } = useSearchCharacters(result, 12, page);
 
   const mapCharactersCards = useCallback(
     (item: SearchCharacterType) => (
@@ -38,6 +38,8 @@ export const Characters: React.FC<{ result: string }> = ({ result }) => {
         isLoading={isLoading}
         isError={isError}
         data={charactersCards}
+        isRetrying={isFetching}
+        onRetry={refetch}
       >
         <div className={cn(styles.search__grid__content)}>
           {charactersCards}

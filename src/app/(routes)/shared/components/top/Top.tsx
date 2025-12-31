@@ -13,7 +13,11 @@ import type { TopAnimeType } from "@/types/anime/anime";
 
 export const Top = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useGetTopAnime(24, "bypopularity", page);
+  const { data, isLoading, isError, refetch, isFetching } = useGetTopAnime(
+    24,
+    "bypopularity",
+    page
+  );
 
   const mapPopularAnime = useCallback(
     (item: TopAnimeType) => (
@@ -42,6 +46,8 @@ export const Top = () => {
         isError={isError}
         data={data}
         skeletonNumber={24}
+        isRetrying={isFetching}
+        onRetry={refetch}
       >
         <div className={cn(styles.card__content__grid__content)}>
           {popularAnime}

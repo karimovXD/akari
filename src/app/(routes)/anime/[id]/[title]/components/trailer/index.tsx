@@ -7,7 +7,7 @@ type Props = {
 };
 
 const AnimeTrailerViewer = ({ id }: Props) => {
-  const { data, isLoading, isError } = useGetAnimeVideos(id);
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeVideos(id);
 
   const promo = data?.data?.promo ?? [];
   const firstTrailer = promo[0]?.trailer;
@@ -18,6 +18,8 @@ const AnimeTrailerViewer = ({ id }: Props) => {
       isError={isError}
       data={data}
       loader="loading"
+      isRetrying={isFetching}
+      onRetry={refetch}
     >
       {firstTrailer?.embed_url ? (
         <AnimeVideoPlayer

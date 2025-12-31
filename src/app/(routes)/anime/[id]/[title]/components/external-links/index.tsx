@@ -13,7 +13,7 @@ import { useCallback } from "react";
 import type { AnimeExternal } from "@/types/anime/anime";
 
 const ExternalLinks = ({ id }: { id: number }) => {
-  const { data, isLoading, isError } = useGetAnimeExternal(id);
+  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeExternal(id);
 
   const mapExternalLinks = useCallback(
     (item: AnimeExternal) => (
@@ -38,6 +38,9 @@ const ExternalLinks = ({ id }: { id: number }) => {
       isLoading={isLoading}
       isError={isError}
       loader="loading"
+      onRetry={refetch}
+      isRetrying={isFetching}
+      
     >
       <Card>
         <CardHeader>

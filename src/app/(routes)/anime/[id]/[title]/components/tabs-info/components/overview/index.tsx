@@ -16,12 +16,16 @@ const Overview: React.FC<PropsType> = ({ id }) => {
     data: animeNewsData,
     isLoading: animeNewsLoading,
     isError: animeNewsError,
+    refetch: animeNewsRefetch,
+    isFetching: animeNewsIsFetching,
   } = useGetAnimeNews(id);
 
   const {
     data: animeIdData,
     isLoading: animeIdLoading,
     isError: animeIdError,
+    refetch: animeIdRefetch,
+    isFetching: animeIdIsFetching,
   } = useGetAnimeById(id);
 
   const mapAnimeNews = useCallback(
@@ -49,6 +53,8 @@ const Overview: React.FC<PropsType> = ({ id }) => {
               isLoading={animeIdLoading}
               isError={animeIdError}
               data={animeIdData}
+              onRetry={animeIdRefetch}
+              isRetrying={animeIdIsFetching}
             >
               {animeIdData?.data.background}
             </QueryState>
@@ -63,6 +69,9 @@ const Overview: React.FC<PropsType> = ({ id }) => {
             isLoading={animeNewsLoading}
             isError={animeNewsError}
             data={animeNews}
+            loader={"loading"}
+            onRetry={animeNewsRefetch}
+            isRetrying={animeNewsIsFetching}
           >
             {animeNews}
           </QueryState>
