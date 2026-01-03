@@ -6,13 +6,15 @@ import styles from "@/app/(routes)/styles.module.scss";
 import { cn } from "@/lib/utils";
 import type { AnimeCharacters } from "@/types/anime/anime";
 import { useCallback } from "react";
+import { DASHBOARD_PAGES } from "@/configs/pages.config";
 
 interface PropsType {
   id: number;
 }
 
 const Characters: React.FC<PropsType> = ({ id }) => {
-  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeCharacters(id);
+  const { data, isLoading, isError, refetch, isFetching } =
+    useGetAnimeCharacters(id);
 
   const animeCharactersMap = useCallback(
     (item: AnimeCharacters) => (
@@ -20,7 +22,10 @@ const Characters: React.FC<PropsType> = ({ id }) => {
         description={item.role}
         image={item.character.images.webp?.image_url as string}
         title={item.character.name}
-        link={item.character.url}
+        link={DASHBOARD_PAGES.CHARACTERS.MANGA_ID(
+          `${item.character.mal_id}`,
+          item.character.name
+        )}
         key={item.character.mal_id + item.character.name}
       />
     ),
@@ -30,7 +35,13 @@ const Characters: React.FC<PropsType> = ({ id }) => {
   const animeCharacters = useQueryMappedData(data?.data, animeCharactersMap);
 
   return (
-    <QueryState isLoading={isLoading} isError={isError} data={data} onRetry={refetch} isRetrying={isFetching}>
+    <QueryState
+      isLoading={isLoading}
+      isError={isError}
+      data={data}
+      onRetry={refetch}
+      isRetrying={isFetching}
+    >
       <div className={cn(styles.card__content__grid__content)}>
         {animeCharacters}
       </div>

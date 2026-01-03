@@ -21,6 +21,12 @@ export interface Entity {
     name: string;
     url: string;
 }
+export interface Entity2 {
+    mal_id: number;
+    url: string;
+    images: MediaImages,
+    title: string;
+}
 
 // Trailer info (appears in anime, etc)
 export interface Trailer {

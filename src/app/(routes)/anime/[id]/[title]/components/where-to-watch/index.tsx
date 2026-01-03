@@ -1,13 +1,20 @@
 import { QueryState } from "@/components/dashboard/anime/QueryState";
-import { TypographyH4 } from "@/components/ui/dashboard-ui/typography/typography";
 import { useGetAnimeStreaming } from "@/hooks/anime/useAnime";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import { useCallback } from "react";
 import type { AnimeExternal } from "@/types/anime/anime";
 import { WhereToWatchItem } from "./Item";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 
 const WhereToWatch = ({ id }: { id: number }) => {
-  const { data, isLoading, isError, refetch, isFetching } = useGetAnimeStreaming(id);
+  const { data, isLoading, isError, refetch, isFetching } =
+    useGetAnimeStreaming(id);
 
   const mapWhereToWatchLinks = useCallback(
     (item: AnimeExternal) => (
@@ -38,10 +45,15 @@ const WhereToWatch = ({ id }: { id: number }) => {
       isRetrying={isFetching}
       onRetry={refetch}
     >
-      <div className="w-full bg-secondary p-2 flex flex-col gap-2 rounded-lg">
-        <TypographyH4>Where to watch</TypographyH4>
-        {animeWhereToWatch}
-      </div>
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>Where to watch</CardTitle>
+          <CardDescription>どこで見る？</CardDescription>
+        </CardHeader>
+        <CardContent className="bg-secondary p-2 flex flex-col gap-2">
+          {animeWhereToWatch}
+        </CardContent>
+      </Card>
     </QueryState>
   );
 };

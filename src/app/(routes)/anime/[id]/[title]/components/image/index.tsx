@@ -1,5 +1,5 @@
+import { LargeImage } from "@/components/ui/dashboard-ui/images/large-image/LargeImage";
 import WhereToWatch from "../where-to-watch";
-import { AnimeImage } from "./AnimeImage";
 import { Visit } from "./Visit";
 
 interface PropsType {
@@ -23,7 +23,7 @@ const MainImage: React.FC<PropsType> = ({
     <div className="w-auto h-auto relative">
       <div className="sticky top-[5rem] flex flex-col items-center justify-center gap-2">
         {hasImageData && (
-          <AnimeImage large_image_url={large_image_url} title={title} />
+          <LargeImage large_image_url={large_image_url} title={title} />
         )}
         {animeListId}
         <WhereToWatch id={id} />

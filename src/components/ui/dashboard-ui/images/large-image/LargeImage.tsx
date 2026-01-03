@@ -3,13 +3,13 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
 
-interface AnimeImageProps {
+interface LargeIMageProps {
   large_image_url: string;
   title: string;
   isPriority?: boolean;
 }
 
-export const AnimeImage: React.FC<AnimeImageProps> = ({
+export const LargeImage: React.FC<LargeIMageProps> = ({
   large_image_url,
   title,
   isPriority = false,
@@ -38,7 +38,7 @@ export const AnimeImage: React.FC<AnimeImageProps> = ({
         alt={title}
         priority={isPriority}
         className={cn(styles.image, isLoading ? styles.loading : styles.loaded)}
-        sizes="(max-width: 768px) 100vw, 320px"
+        sizes="(max-width: 768px) 100vw, 300px"
         onLoadingComplete={() => setIsLoading(false)}
         onError={() => {
           setImageError(true);

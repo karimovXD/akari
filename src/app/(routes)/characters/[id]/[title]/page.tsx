@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Characters } from "./Characters";
 
 type PropsType = {
   params: {
@@ -16,14 +17,9 @@ export async function generateMetadata({
 }
 
 const page = ({ params }: PropsType) => {
-  const { title, id } = params;
+  const { id } = params;
 
-  return (
-    <div>
-      {title}
-      {id}
-    </div>
-  );
+  return <Characters id={id} />;
 };
 
 export default page;

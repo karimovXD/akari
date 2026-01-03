@@ -7,7 +7,6 @@ import { TypographyP } from "@/components/ui/dashboard-ui/typography/typography"
 import styles from "./styles.module.scss";
 import AnimeInfo from "./components/anime-info/AnimeInfo";
 import { cn } from "@/lib/utils";
-import Header from "./components/header";
 import MainImage from "./components/image";
 import AdditionInfo from "./components/additional-info";
 import TabsInfo from "./components/tabs-info";
@@ -15,6 +14,7 @@ import { Spinner } from "@/components/ui/spinner";
 import AnimeTrailerViewer from "./components/trailer/index";
 import ExternalLinks from "./components/external-links";
 import Recommendations from "./components/recommendations";
+import MainHeader from "@/components/dashboard/anime/main/components/main-header";
 
 interface PropsType {
   id: number;
@@ -41,7 +41,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
       isRetrying={isFetching}
     >
       <div className={styles.main__content}>
-        <Header />
+        <MainHeader />
         <div
           className={cn(
             `${styles.anime__content} flex-col-reverse md:flex-row`
