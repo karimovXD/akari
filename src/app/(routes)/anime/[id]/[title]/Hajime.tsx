@@ -13,7 +13,7 @@ import TabsInfo from "./components/tabs-info";
 import { Spinner } from "@/components/ui/spinner";
 import AnimeTrailerViewer from "./components/trailer/index";
 import ExternalLinks from "./components/external-links";
-import Recommendations from "./components/recommendations";
+import Recommendations from "./components/recommendations/index";
 import MainHeader from "@/components/dashboard/anime/main/components/main-header";
 
 interface PropsType {
@@ -65,7 +65,9 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
               scored_by={data?.data.scored_by}
               status={data?.data.status}
             />
-            {aboutAnime}
+            <TypographyP className="whitespace-pre-line">
+              {aboutAnime}
+            </TypographyP>
             <AnimeInfo
               aired={data?.data.aired.string}
               duration={data?.data.duration}

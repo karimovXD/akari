@@ -26,7 +26,7 @@ export const MiniInfo: React.FC<PropsType> = ({ character }) => {
           (item) =>
             item.response && (
               <div key={item.title} className="flex items-center gap-2">
-                <CardTitle>{item.title}</CardTitle>
+                <CardTitle className="capitalize">{item.title}</CardTitle>
                 <CardDescription>{item.response}</CardDescription>
               </div>
             )

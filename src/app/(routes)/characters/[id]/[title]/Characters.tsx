@@ -6,6 +6,7 @@ import MainImage from "./components/image";
 import MainHeader from "@/components/dashboard/anime/main/components/main-header";
 import styles from "./styles.module.scss";
 import { cn } from "@/lib/utils";
+import TabsInfo from "./components/tabs-content";
 
 export const Characters = ({ id }: { id: string }) => {
   const { data, isLoading, isError, refetch, isFetching } =
@@ -28,7 +29,15 @@ export const Characters = ({ id }: { id: string }) => {
           )}
         >
           <MainImage character={data?.data!} />
-          <div className={cn(styles.anime__content__article)}></div>
+          <div
+            className={cn(styles.anime__content__article, "overflow-hidden")}
+          >
+            <TabsInfo
+              id={id}
+              name={data?.data?.name!}
+              about={data?.data?.about!}
+            />
+          </div>
         </div>
       </div>
     </QueryState>

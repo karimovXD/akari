@@ -1,32 +1,33 @@
 import type { CharacterFullByIdType } from "@/types/anime/characters";
+import { EnumInfoItemType, type InfoItem } from "./types";
 
-export const infoData = (item: CharacterFullByIdType) => [
+export const infoData = (item: CharacterFullByIdType): InfoItem[] => [
     {
-        title: "MAL ID",
+        title: EnumInfoItemType.ID,
         response: item.mal_id,
     },
     {
-        title: "favorites",
+        title: EnumInfoItemType.FAVORITES,
         response: item.favorites,
     },
     {
-        title: "anime",
+        title: EnumInfoItemType.ANIME,
         response: item.anime?.length,
     },
     {
-        title: "manga",
+        title: EnumInfoItemType.MANGA,
         response: item.manga?.length,
     },
     {
-        title: "voice actors",
+        title: EnumInfoItemType.VOICE_ACTORS,
         response: item.voices?.length,
     },
     {
-        title: "languages",
+        title: EnumInfoItemType.LANGUAGES,
         response: new Set(item.voices?.map(v => v.language)).size,
     },
     {
-        title: "japanese name",
+        title: EnumInfoItemType.JAPANESE_NAME,
         response: item.name_kanji,
     },
 ] as const;

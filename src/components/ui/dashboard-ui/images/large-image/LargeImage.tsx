@@ -1,52 +1,40 @@
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import { cn } from "@/lib/utils";
 
-interface LargeIMageProps {
+interface LargeImageProps {
   large_image_url: string;
   title: string;
   isPriority?: boolean;
 }
 
-export const LargeImage: React.FC<LargeIMageProps> = ({
+export const LargeImage = ({
   large_image_url,
   title,
   isPriority = false,
-}) => {
-  const [imageError, setImageError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+}: LargeImageProps) => {
+  const [hasError, setHasError] = useState(false);
 
-  if (imageError) {
+  if (hasError) {
     return (
       <div className={styles.errorContainer}>
-        <div className={styles.errorContent}>
-          <div className={styles.errorIcon}>🖼️</div>
-          <p className={styles.errorText}>Failed to load image</p>
-        </div>
+        <span className={styles.errorText}>No image</span>
       </div>
     );
   }
 
   return (
     <div className={styles.imageContainer}>
-      {isLoading && <div className={styles.loadingSkeleton} />}
-
       <Image
         src={large_image_url}
-        fill
         alt={title}
+        width={200}
+        height={280}
         priority={isPriority}
-        className={cn(styles.image, isLoading ? styles.loading : styles.loaded)}
-        sizes="(max-width: 768px) 100vw, 300px"
-        onLoadingComplete={() => setIsLoading(false)}
-        onError={() => {
-          setImageError(true);
-          setIsLoading(false);
-        }}
+        className={styles.image}
+        sizes="200px"
+        onError={() => setHasError(true)}
       />
-
-      <div className={styles.overlay} />
     </div>
   );
 };
