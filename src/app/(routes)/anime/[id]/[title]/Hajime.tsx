@@ -27,7 +27,9 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
 
   const aboutAnime = (
     <div>
-      <TypographyP>{data?.data.synopsis}</TypographyP>
+      <TypographyP className="whitespace-pre-line mt-0">
+        {data?.data.synopsis}
+      </TypographyP>
     </div>
   );
 
@@ -65,9 +67,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
               scored_by={data?.data.scored_by}
               status={data?.data.status}
             />
-            <TypographyP className="whitespace-pre-line">
-              {aboutAnime}
-            </TypographyP>
+            {aboutAnime}
             <AnimeInfo
               aired={data?.data.aired.string}
               duration={data?.data.duration}
