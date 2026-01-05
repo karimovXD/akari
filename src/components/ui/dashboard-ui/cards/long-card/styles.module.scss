@@ -1,0 +1,12 @@
+.long_card {
+    display: flex;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    height: 100%;
+
+    &__content {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+    }
+}

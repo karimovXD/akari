@@ -27,9 +27,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
 
   const aboutAnime = (
     <div>
-      <TypographyP className="whitespace-pre-line mt-0">
-        {data?.data.synopsis}
-      </TypographyP>
+      <TypographyP className="mt-0">{data?.data.synopsis}</TypographyP>
     </div>
   );
 

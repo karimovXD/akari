@@ -54,7 +54,7 @@ export function TypographyH4({ children, className }: defaultTypographyType) {
 
 export function TypographyP({ children, className }: defaultTypographyType) {
   return (
-    <p className={cn("leading-5.5 [&:not(:first-child)]:mt-2", className)}>
+    <p className={cn("leading-5.5 [&:not(:first-child)]:mt-2 whitespace-pre-line", className)}>
       {children}
     </p>
   );

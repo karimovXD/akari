@@ -15,7 +15,7 @@ const Biography: React.FC<PropsType> = ({ name, about }) => {
       <TypographyH1>{name}</TypographyH1>
       <div>
         <TypographyH2>Biography</TypographyH2>
-        <TypographyP className="whitespace-pre-line mt-0">{about}</TypographyP>
+        <TypographyP className="mt-0">{about}</TypographyP>
       </div>
     </div>
   );

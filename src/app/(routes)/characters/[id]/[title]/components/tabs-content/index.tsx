@@ -4,6 +4,8 @@ import { EnumTabsContentType } from "./types";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Biography from "./components/biography";
 import Pictures from "./components/pictures";
+import Anime from "./components/anime";
+import Manga from "./components/manga";
 
 interface PropsType {
   id: string;
@@ -36,10 +38,10 @@ const TabsInfo: React.FC<PropsType> = ({ id, name, about }) => {
         <Pictures id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsContentType.ANIME}>
-        <div>hello</div>
+        <Anime id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsContentType.MANGA}>
-        <div>hello</div>
+        <Manga id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsContentType.VOICE_ACTORS}>
         <div>hello</div>
