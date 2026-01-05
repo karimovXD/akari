@@ -6,6 +6,7 @@ import Biography from "./components/biography";
 import Pictures from "./components/pictures";
 import Anime from "./components/anime";
 import Manga from "./components/manga";
+import VoiceActors from "./components/voices";
 
 interface PropsType {
   id: string;
@@ -44,7 +45,7 @@ const TabsInfo: React.FC<PropsType> = ({ id, name, about }) => {
         <Manga id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsContentType.VOICE_ACTORS}>
-        <div>hello</div>
+        <VoiceActors id={id} />
       </TabsContent>
     </Tabs>
   );
