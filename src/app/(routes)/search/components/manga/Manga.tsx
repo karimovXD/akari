@@ -12,12 +12,16 @@ import type { SearchMangaType } from "@/types/anime/search";
 
 export const Manga: React.FC<{ result: string }> = ({ result }) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, refetch, isFetching } = useSearchManga(result, 12, page);
+  const { data, isLoading, isError, refetch, isFetching } = useSearchManga(
+    result,
+    12,
+    page
+  );
 
   const mapMangaCards = useCallback(
     (item: SearchMangaType) => (
       <MainCard
-        key={item.mal_id + item.title}
+        key={item.mal_id + item.title + item.authors}
         image={item.images.webp?.large_image_url as string}
         title={item.title}
         link={DASHBOARD_PAGES.MANGA.MANGA_ID(`${item.mal_id}`, `${item.title}`)}
@@ -32,7 +36,13 @@ export const Manga: React.FC<{ result: string }> = ({ result }) => {
 
   return (
     <SectionCategory title="manga">
-      <QueryState isLoading={isLoading} isError={isError} data={mangaCards} isRetrying={isFetching} onRetry={refetch}>
+      <QueryState
+        isLoading={isLoading}
+        isError={isError}
+        data={mangaCards}
+        isRetrying={isFetching}
+        onRetry={refetch}
+      >
         <div className={cn(styles.search__grid__content)}>{mangaCards}</div>
         <PaginationNumbers
           currentPage={page}

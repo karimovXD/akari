@@ -6,15 +6,15 @@ class DASHBOARD {
     STUDY = `${this.root}study`;
     ANIME = {
         ROOT: `${this.root}anime`,
-        ANIME_ID: (id: string, title: string) => `${this.root}anime/${id}/${title}`
+        ANIME_ID: (id: string, title: string) => `${this.ANIME.ROOT}/${id}/${title}`
     };
     MANGA = {
         ROOT: `${this.root}manga`,
-        MANGA_ID: (id: string, title: string) => `${this.root}manga/${id}/${title}`
+        MANGA_ID: (id: string, title: string) => `${this.MANGA.ROOT}/${id}/${title}`
     };
     CHARACTERS = {
         ROOT: `${this.root}characters`,
-        MANGA_ID: (id: string, title: string) => `${this.root}characters/${id}/${title}`
+        MANGA_ID: (id: string, title: string) => `${this.CHARACTERS.ROOT}/${id}/${title}`
     };
     SEARCH = {
         ROOT: `${this.root}search`,
@@ -22,9 +22,13 @@ class DASHBOARD {
             const params = new URLSearchParams();
             if (result.trim()) params.set("result", result.trim());
             if (category) params.set("category", category);
-            return `/search?${params.toString()}`;
+            return `${this.SEARCH.ROOT}?${params.toString()}`;
         },
     };
+    PEOPLE = {
+        ROOT: `${this.root}/people`,
+        QUERY: (id: string, title: string) => `${this.CHARACTERS.ROOT}/${id}/${title}`
+    }
 }
 
 export const DASHBOARD_PAGES = new DASHBOARD();

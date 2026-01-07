@@ -13,6 +13,7 @@ import { LongCard } from "@/components/ui/dashboard-ui/cards/long-card/LongCard"
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import { TypographyH2 } from "@/components/ui/dashboard-ui/typography/typography";
 import styles from "@/app/(routes)/styles.module.scss";
+import { Spinner } from "@/components/ui/spinner";
 
 const VoiceActors = ({ id }: { id: string }) => {
   const { data, isLoading, isError, refetch, isFetching } =
@@ -26,10 +27,7 @@ const VoiceActors = ({ id }: { id: string }) => {
         badge={item.language}
         title={item.person.name}
         src={item.person.images.jpg?.image_url}
-        url={DASHBOARD_PAGES.ANIME.ANIME_ID(
-          `${item.person.mal_id}`,
-          item.person.name
-        )}
+        url={item.person.url}
       />
     ),
     []
@@ -44,6 +42,7 @@ const VoiceActors = ({ id }: { id: string }) => {
       isError={isError}
       isRetrying={isFetching}
       onRetry={refetch}
+      loader={<Spinner />}
     >
       <div className="flex flex-col gap-2">
         {data?.data.length && (

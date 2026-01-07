@@ -7,6 +7,7 @@ import { LongCard } from "@/components/ui/dashboard-ui/cards/long-card/LongCard"
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
 import { TypographyH2 } from "@/components/ui/dashboard-ui/typography/typography";
 import styles from "@/app/(routes)/styles.module.scss";
+import { Spinner } from "@/components/ui/spinner";
 
 const Manga = ({ id }: { id: string }) => {
   const { data, isLoading, isError, refetch, isFetching } =
@@ -38,6 +39,7 @@ const Manga = ({ id }: { id: string }) => {
       isError={isError}
       isRetrying={isFetching}
       onRetry={refetch}
+      loader={<Spinner />}
     >
       <div className="flex flex-col gap-2">
         {data?.data.length && (

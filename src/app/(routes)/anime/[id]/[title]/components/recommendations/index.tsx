@@ -7,6 +7,7 @@ import { EmblaCarousel } from "@/components/ui/dashboard-ui/slider";
 import { usePathname } from "next/navigation";
 import type { EmblaOptionsType } from "embla-carousel";
 import type { AnimeRecommendations } from "@/types/anime/anime";
+import { Spinner } from "@/components/ui/spinner";
 
 const Recommendations = ({ id }: { id: number }) => {
   const { data, isLoading, isError, refetch, isFetching } =
@@ -24,9 +25,9 @@ const Recommendations = ({ id }: { id: number }) => {
       isLoading={isLoading}
       data={data}
       isError={isError}
-      skeletonNumber={12}
       onRetry={refetch}
       isRetrying={isFetching}
+      loader={<Spinner />}
     >
       <EmblaCarousel<AnimeRecommendations>
         slides={moreByArtist!}

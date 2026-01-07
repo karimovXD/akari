@@ -21,7 +21,7 @@ export const Anime: React.FC<{ result: string }> = ({ result }) => {
   const mapAnimeCards = useCallback(
     (item: SearchAnimeType) => (
       <MainCard
-        key={item.mal_id + item.title}
+        key={item.mal_id + item.title + item.favorites}
         image={item.images.webp?.large_image_url as string}
         title={item.title}
         link={DASHBOARD_PAGES.ANIME.ANIME_ID(`${item.mal_id}`, `${item.title}`)}
