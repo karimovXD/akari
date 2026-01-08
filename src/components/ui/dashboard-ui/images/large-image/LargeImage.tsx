@@ -28,11 +28,10 @@ export const LargeImage = ({
       <Image
         src={large_image_url}
         alt={title}
-        width={200}
-        height={280}
+        width={260}
+        height={370}
         priority={isPriority}
         className={styles.image}
-        sizes="200px"
         onError={() => setHasError(true)}
       />
     </div>

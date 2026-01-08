@@ -1,13 +1,7 @@
 import { QueryState } from "@/components/dashboard/anime/QueryState";
-import {
-  useGetCharacterAnime,
-  useGetCharacterVoiceActors,
-} from "@/hooks/anime/useCharacters";
+import { useGetCharacterVoiceActors } from "@/hooks/anime/useCharacters";
 import { useCallback } from "react";
-import type {
-  CharacterAnimeType,
-  CharacterVoiceActorsType,
-} from "@/types/anime/characters";
+import type { CharacterVoiceActorsType } from "@/types/anime/characters";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import { LongCard } from "@/components/ui/dashboard-ui/cards/long-card/LongCard";
 import { DASHBOARD_PAGES } from "@/configs/pages.config";
@@ -27,7 +21,10 @@ const VoiceActors = ({ id }: { id: string }) => {
         badge={item.language}
         title={item.person.name}
         src={item.person.images.jpg?.image_url}
-        url={item.person.url}
+        url={DASHBOARD_PAGES.PEOPLE.QUERY(
+          `${item.person.mal_id}`,
+          item.person.name
+        )}
       />
     ),
     []

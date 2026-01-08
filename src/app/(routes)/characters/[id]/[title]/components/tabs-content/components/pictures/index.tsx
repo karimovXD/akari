@@ -1,7 +1,7 @@
 import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { useGetCharacterPictures } from "@/hooks/anime/useCharacters";
 import { useCallback } from "react";
-import { Item } from "./Item";
+import { CardImage } from "@/components/ui/dashboard-ui/images/card-image/CardImage";
 import type { CharacterPicturesType } from "@/types/anime/characters";
 import { useQueryMappedData } from "@/utils/api/useQueryMappedData";
 import { TypographyH2 } from "@/components/ui/dashboard-ui/typography/typography";
@@ -13,7 +13,7 @@ const Pictures = ({ id }: { id: string }) => {
 
   const mapCharacterPicture = useCallback(
     (item: CharacterPicturesType) => (
-      <Item
+      <CardImage
         key={item.jpg.image_url}
         src={item.jpg.image_url}
         alt={"character picture"}

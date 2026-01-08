@@ -7,7 +7,7 @@ type PropsType = {
   alt?: string;
 };
 
-export const Item = memo(({ src, alt = "" }: PropsType) => {
+export const CardImage = memo(({ src, alt = "" }: PropsType) => {
   if (!src) return null;
 
   return (
@@ -25,4 +25,4 @@ export const Item = memo(({ src, alt = "" }: PropsType) => {
   );
 });
 
-Item.displayName = "Item";
+CardImage.displayName = "CardImage";

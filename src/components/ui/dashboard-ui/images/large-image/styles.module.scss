@@ -1,7 +1,7 @@
 .imageContainer {
-    width: 240px;
-    height: 340px;
-    border-radius: 6px;
+    width: 260px;
+    height: 370px;
+    border-radius: 0.5rem;
     overflow: hidden;
     background: #e5e7eb;
 }
@@ -13,9 +13,9 @@
 }
 
 .errorContainer {
-    width: 240px;
-    height: 340px;
-    border-radius: 6px;
+    width: 260px;
+    height: 370px;
+    border-radius: 0.5rem;
     background: #e5e7eb;
     display: flex;
     align-items: center;
@@ -23,6 +23,6 @@
 }
 
 .errorText {
-    font-size: 12px;
+    font-size: 1rem;
     color: #6b7280;
 }

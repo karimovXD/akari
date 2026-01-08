@@ -16,6 +16,10 @@ class DASHBOARD {
         ROOT: `${this.root}characters`,
         MANGA_ID: (id: string, title: string) => `${this.CHARACTERS.ROOT}/${id}/${title}`
     };
+    PEOPLE = {
+        ROOT: `${this.root}people`,
+        QUERY: (id: string, title: string) => `${this.PEOPLE.ROOT}/${id}/${title}`
+    }
     SEARCH = {
         ROOT: `${this.root}search`,
         QUERY: (result: string, category: string) => {
@@ -25,10 +29,6 @@ class DASHBOARD {
             return `${this.SEARCH.ROOT}?${params.toString()}`;
         },
     };
-    PEOPLE = {
-        ROOT: `${this.root}/people`,
-        QUERY: (id: string, title: string) => `${this.CHARACTERS.ROOT}/${id}/${title}`
-    }
 }
 
 export const DASHBOARD_PAGES = new DASHBOARD();
