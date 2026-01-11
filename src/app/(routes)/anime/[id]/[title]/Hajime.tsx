@@ -4,9 +4,7 @@ import { QueryState } from "@/components/dashboard/anime/QueryState";
 import { AnimeInfoBadge } from "./components/AnimeInfoBadge";
 import { AnimeTitles } from "./components/AnimeTitles";
 import { TypographyP } from "@/components/ui/dashboard-ui/typography/typography";
-import styles from "./styles.module.scss";
 import AnimeInfo from "./components/anime-info/AnimeInfo";
-import { cn } from "@/lib/utils";
 import MainImage from "./components/image";
 import AdditionInfo from "./components/additional-info";
 import TabsInfo from "./components/tabs-info";
@@ -15,6 +13,7 @@ import AnimeTrailerViewer from "./components/trailer/index";
 import ExternalLinks from "./components/external-links";
 import Recommendations from "./components/recommendations/index";
 import MainHeader from "@/components/dashboard/anime/main/components/main-header";
+import "@/styles/layout.scss";
 
 interface PropsType {
   id: number;
@@ -40,20 +39,16 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
       onRetry={refetch}
       isRetrying={isFetching}
     >
-      <div className={styles.main__content}>
+      <div className="main__content">
         <MainHeader />
-        <div
-          className={cn(
-            `${styles.anime__content} flex-col-reverse md:flex-row`
-          )}
-        >
+        <div className="second__main__content flex-col-reverse md:flex-row">
           <MainImage
             large_image_url={data?.data?.images.webp?.large_image_url}
             title={data?.data.title}
             anime_list_id={data?.data.url}
             id={id}
           />
-          <div className={cn(styles.anime__content__article)}>
+          <div className="second__main__content__article">
             <AnimeTitles
               title={data?.data.title}
               title_english={data?.data.title_english}

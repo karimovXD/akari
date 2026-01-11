@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { formatNumber } from "@/utils/format/formatNumbers";
-import styles from "../styles.module.scss";
 
 interface PropsType {
   score?: number | null;
@@ -30,7 +29,7 @@ export const AnimeInfoBadge: React.FC<OptionalProps> = ({
     ) : null;
 
   return (
-    <div className={styles.anime__content__article_info_badge}>
+    <div className="flex items-center justify-start gap-2 flew-wrap ">
       {scoreBadge}
       <Badge variant={"outline"}>{rating}</Badge>
       <Badge>{status}</Badge>

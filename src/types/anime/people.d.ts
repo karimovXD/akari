@@ -23,5 +23,16 @@ export interface PersonFullByIdType extends BaseCharacter {
         character: BaseCharacter;
     }[],
 }
+export interface PersonPicturesType {
+    jpg: {
+        image_url: string | null
+    }
+}
+export interface PersonAnimeType {
+    position: string;
+    anime: Entity2;
+}
 
 export type PersonFullByIdTypeResponse = ApiResponseWithoutPagination<PersonFullByIdType>;
+export type PersonPicturesTypeResponse = ApiResponseWithoutPagination<PersonPicturesType[]>;
+export type PersonAnimeTypeResponse = ApiResponseWithoutPagination<PersonAnimeType[]>;

@@ -3,8 +3,8 @@ import { menuData } from "./tabs.data";
 import { EnumTabsContentType } from "./types";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Biography from "./components/biography/index";
-//import Pictures from "./components/pictures";
-//import Anime from "./components/anime";
+import Pictures from "./components/pictures";
+import Anime from "./components/anime";
 
 interface PropsType {
   id: string;
@@ -34,10 +34,10 @@ const TabsInfo: React.FC<PropsType> = ({ id, name, about }) => {
         )}
       </TabsContent>
       <TabsContent value={EnumTabsContentType.PICTURES}>
-        {/*<Pictures id={id} />*/}
+        <Pictures id={id} />
       </TabsContent>
       <TabsContent value={EnumTabsContentType.ANIME}>
-        {/*<Anime id={id} />*/}
+        <Anime id={id} />
       </TabsContent>
     </Tabs>
   );

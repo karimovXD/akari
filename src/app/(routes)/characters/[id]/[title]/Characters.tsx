@@ -4,8 +4,7 @@ import { useGetCharacterFullById } from "@/hooks/anime/useCharacters";
 import { Spinner } from "@/components/ui/spinner";
 import MainImage from "./components/image";
 import MainHeader from "@/components/dashboard/anime/main/components/main-header";
-import styles from "./styles.module.scss";
-import { cn } from "@/lib/utils";
+import "@/styles/layout.scss";
 import TabsInfo from "./components/tabs-content";
 
 export const Characters = ({ id }: { id: string }) => {
@@ -21,17 +20,11 @@ export const Characters = ({ id }: { id: string }) => {
       onRetry={refetch}
       loader={<Spinner />}
     >
-      <div className={styles.main__content}>
+      <div className={"main__content"}>
         <MainHeader />
-        <div
-          className={cn(
-            `${styles.anime__content} flex-col-reverse md:flex-row`
-          )}
-        >
+        <div className="second__main__content flex-col md:flex-row">
           <MainImage character={data?.data!} />
-          <div
-            className={cn(styles.anime__content__article, "overflow-hidden")}
-          >
+          <div className="second__main__content__article">
             <TabsInfo
               id={id}
               name={data?.data?.name!}

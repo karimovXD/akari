@@ -2,7 +2,7 @@ import {
   TypographyH1,
   TypographyLead,
 } from "@/components/ui/dashboard-ui/typography/typography";
-import styles from "../styles.module.scss";
+//import styles from "../styles.module.scss";
 
 interface PropsType {
   title: string;
@@ -26,7 +26,7 @@ export const AnimeTitles: React.FC<OptionalProps> = ({
   );
 
   return (
-    <div className={styles.anime__content__article_titles}>
+    <div className="flex flex-col items-start justifty-center gap-2">
       <TypographyH1>{title}</TypographyH1>
       {englishTitle}
       {japaneseTitle}
