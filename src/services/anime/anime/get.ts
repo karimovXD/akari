@@ -2,12 +2,13 @@ import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNews
 import { axiosInstance } from '@/api/axios.instance'
 import { SERVER_ERROR_TEXT } from '@/constants/seo.constans';
 import type { AxiosError } from "axios";
+import { defaultParams } from "@/api/jikan.params";
 
 export const AnimeService = {
     async getTop(limit = 10, filter: EnumTopAnimeFilter, page = 1): Promise<TopAnimeResponse> {
         try {
             const { data } = await axiosInstance.get<TopAnimeResponse>('/top/anime', {
-                params: { limit, filter, page }
+                params: { ...defaultParams, limit, filter, page }
             });
             return data;
         } catch (error) {

@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/api/axios.instance'
+import { defaultParams } from '@/api/jikan.params';
 import { SERVER_ERROR_TEXT } from '@/constants/seo.constans';
 import type { SearchAnimeResponse, SearchCharacterResponse, SearchMangaResponse } from "@/types/anime/search";
 import type { AxiosError } from "axios";
@@ -8,6 +9,7 @@ export const SearchService = {
         try {
             const { data } = await axiosInstance.get<SearchAnimeResponse>('/anime', {
                 params: {
+                    ...defaultParams,
                     q: query,
                     limit,
                     page
@@ -25,6 +27,7 @@ export const SearchService = {
         try {
             const { data } = await axiosInstance.get<SearchMangaResponse>('/manga', {
                 params: {
+                    ...defaultParams,
                     q: query,
                     limit,
                     page

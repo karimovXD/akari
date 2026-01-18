@@ -21,10 +21,7 @@ const Manga = ({ id }: { id: string }) => {
         badge={item.role}
         title={item.manga.title}
         src={item.manga.images.webp?.image_url}
-        url={DASHBOARD_PAGES.MANGA.MANGA_ID(
-          `${item.manga.mal_id}`,
-          item.manga.title
-        )}
+        url={item.manga.url}
       />
     ),
     []

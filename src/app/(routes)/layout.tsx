@@ -12,7 +12,7 @@ export default function RoutesLayout({
     <div className={styles.layout__content}>
       <Header />
       <main className="flex-1">
-        <Container className="h-full">{children}</Container>
+        <Container>{children}</Container>
       </main>
       <Footer />
     </div>

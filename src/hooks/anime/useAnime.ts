@@ -1,13 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { AnimeService } from "@/services/anime/anime/index";
 import type { TopAnimeResponse, EnumTopAnimeFilter, AnimeByIdResponse, AnimeNewsResponse, AnimeCharactersResponse, AnimeEpisodesResponse, AnimeRelationsResponse, AnimeVideosResponse, AnimeExternalResponse, AnimeRecommendationsResponse } from "@/types/anime/anime";
+import { dedupeByKey } from "@/utils/api/dedupeData";
 
 export const useGetTopAnime = (limit = 10, filter: EnumTopAnimeFilter, page: number) => {
     return useQuery<TopAnimeResponse>({
         queryKey: ["topAnime", limit, page],
         queryFn: () => AnimeService.getTop(limit, filter, page),
+        placeholderData: (prev) => prev,
         staleTime: 1000 * 60 * 3,
         retry: 1,
+        select: (data) => ({
+            ...data,
+            data: dedupeByKey(data.data, 'mal_id'),
+        }),
     });
 };
 
@@ -42,8 +48,13 @@ export const useGetAnimeEpisodes = (id: number, page: number) => {
     return useQuery<AnimeEpisodesResponse>({
         queryKey: ["animeEpisodes", id, page],
         queryFn: () => AnimeService.getAnimeEpisodes(id, page),
+        placeholderData: (prev) => prev,
         staleTime: 1000 * 60 * 3,
-        retry: 1
+        retry: 1,
+        select: (data) => ({
+            ...data,
+            data: dedupeByKey(data.data, 'mal_id'),
+        }),
     })
 }
 

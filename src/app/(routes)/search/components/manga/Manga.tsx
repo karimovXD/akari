@@ -24,7 +24,7 @@ export const Manga: React.FC<{ result: string }> = ({ result }) => {
         key={item.mal_id + item.title + item.authors}
         image={item.images.webp?.large_image_url as string}
         title={item.title}
-        link={DASHBOARD_PAGES.MANGA.MANGA_ID(`${item.mal_id}`, `${item.title}`)}
+        link={item.url}
         description={`${item.type}`}
         score={item.score}
       />
