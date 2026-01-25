@@ -18,7 +18,7 @@ export const menuData: menuDataType[] = [
     {
         id: 3,
         title: "genres",
-        link: DASHBOARD_PAGES.GENRES,
+        link: DASHBOARD_PAGES.GENRES.ROOT,
         icon: Drama
     },
     {

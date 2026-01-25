@@ -2,7 +2,10 @@ class DASHBOARD {
     private root = '/';
 
     HOME = this.root;
-    GENRES = `${this.root}genres`;
+    GENRES = {
+        ROOT: `${this.root}genres`,
+        GENRE_ID: (id: string, title: string) => `${this.GENRES.ROOT}/${id}/${title}`
+    };
     STUDY = `${this.root}study`;
     ANIME = {
         ROOT: `${this.root}anime`,
