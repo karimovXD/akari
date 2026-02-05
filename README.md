@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -34,3 +35,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+=======
+# Akari 🌸
+
+Akari is a personal pet project — a modern web application for browsing and discovering anime.
+
+## ✨ Features
+
+- Browse anime catalog
+- Search anime by title
+- View detailed anime information
+- Clean and minimal UI
+- Responsive design
+
+## 🛠 Tech Stack
+
+- React
+- Next.js
+- TypeScript
+- CSS / SCSS / Tailwind (depending on your setup)
+- Public anime API
+
+## 🚀 Getting Started
+Clone the repository:
+
+```bash
+git clone https://github.com/karimovXD/akari.git
+>>>>>>> b7ee72103ab16f98b96a55f0ee401e7a7ab50235

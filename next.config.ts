@@ -18,7 +18,10 @@ const nextConfig: NextConfig = {
         pathname: "/**"
       },
     ]
-  }
+  },
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;
