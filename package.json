@@ -9,9 +9,6 @@
     "lint": "biome check",
     "format": "biome format --write"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-avatar": "^1.1.10",
