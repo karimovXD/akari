@@ -12,7 +12,7 @@ export default function RoutesLayout({
       <div className={styles.layout__content}>
         <BackButton />
         <div className={styles.layout__content__input}>
-          <SearchInput />
+          <SearchInput /> 
         </div>
       </div>
       {children}

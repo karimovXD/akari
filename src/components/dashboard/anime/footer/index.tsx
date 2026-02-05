@@ -53,6 +53,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
+        <TypographyMuted className="text-center">BETA</TypographyMuted>
       </Container>
     </div>
   );

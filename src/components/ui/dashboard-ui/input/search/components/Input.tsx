@@ -31,27 +31,36 @@ export const SearchInput: React.FC = () => {
   };
 
   return (
-    <ButtonGroup className="w-full max-w-[30rem]">
-      <SelectComponent
-        selectQuery={selectQuery}
-        setSelectQuery={setSelectQuery}
-      />
-      <Input
-        type="text"
-        placeholder="Search Anime, Manga, and more..."
-        aria-label="Search input"
-        onKeyDown={handleKeyDown}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <Button
-        type="button"
-        variant="outline"
-        aria-label="Search button"
-        disabled={!query.trim()}
-        onClick={handleSearch}
-      >
-        <SearchIcon />
-      </Button>
+    <ButtonGroup className="w-full max-w-[34rem] flex justify-between flex-col sm:flex-row">
+      <ButtonGroup>
+        <SelectComponent
+          selectQuery={selectQuery}
+          setSelectQuery={setSelectQuery}
+        />
+      </ButtonGroup>
+      <div className="flex gap-2 w-full">
+        <ButtonGroup className="w-full">
+          <Input
+            type="text"
+            placeholder="Search Anime, Manga, and more..."
+            aria-label="Search input"
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button
+            type="button"
+            variant="outline"
+            aria-label="Search button"
+            disabled={!query.trim()}
+            onClick={handleSearch}
+            size={"icon"}
+          >
+            <SearchIcon />
+          </Button>
+        </ButtonGroup>
+      </div>
     </ButtonGroup>
   );
 };
