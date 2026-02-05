@@ -19,3 +19,7 @@ Akari is a personal pet project — a modern web application for browsing and di
 - Public anime API
 
 ## 🚀 Getting Started
+Clone the repository:
+
+```bash
+git clone https://github.com/karimovXD/akari.git
