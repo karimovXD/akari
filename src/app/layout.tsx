@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/app/providers/theme.provider";
-import { SITE_NAME, WEBSITE_LINK } from "@/constants/seo.constans";
+import { SITE_NAME, siteUrl } from "@/constants/seo.constans";
 import { QueryProvider } from "./providers/QueryProvider";
 //@ts-ignore
 import "./globals.css";
@@ -12,13 +12,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
+
   title: {
     template: `%s - ${SITE_NAME}`,
     default: `${SITE_NAME} — Anime Universe`,
   },
+
   description: `${SITE_NAME} is a place for anime lovers — discover series, characters, and stories brought to life with elegant design and detail.`,
+
   keywords: [
-    `${SITE_NAME}`,
+    SITE_NAME,
     "anime",
     "anime website",
     "anime collection",
@@ -28,28 +32,32 @@ export const metadata: Metadata = {
     "otaku culture",
     "next js",
   ],
+
   openGraph: {
     title: `${SITE_NAME} — Anime Universe`,
     description: `Discover the world of ${SITE_NAME} — a beautifully designed anime website inspired by Japanese animation and storytelling.`,
-    url: `${WEBSITE_LINK}`,
-    siteName: `${SITE_NAME}`,
+    url: siteUrl,
+    siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL(`${WEBSITE_LINK}`),
+
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Anime Universe`,
     description: `${SITE_NAME} is a modern anime space inspired by Japanese animation and culture.`,
-    images: ["/og-image.jpg"],
+    images: [`${siteUrl}/og-image.jpg`],
   },
+
   robots: {
     index: true,
     follow: true,
   },
+
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
+
   icons: {
     icon: "/assets/logos/website-logo/akari-logo.png",
   },
