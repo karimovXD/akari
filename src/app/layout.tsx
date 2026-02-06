@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/app/providers/theme.provider";
-import { SITE_NAME } from "@/constants/seo.constans";
+import { SITE_NAME, WEBSITE_LINK } from "@/constants/seo.constans";
 import { QueryProvider } from "./providers/QueryProvider";
 //@ts-ignore
 import "./globals.css";
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SITE_NAME} — Anime Universe`,
     description: `Discover the world of ${SITE_NAME} — a beautifully designed anime website inspired by Japanese animation and storytelling.`,
-    url: "https://akari.vercel.app",
+    url: `${WEBSITE_LINK}`,
     siteName: `${SITE_NAME}`,
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL("https://akari.vercel.app"),
+  metadataBase: new URL(`${WEBSITE_LINK}`),
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Anime Universe`,
