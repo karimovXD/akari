@@ -41,7 +41,7 @@ export const Hajime: React.FC<PropsType> = ({ id }) => {
     >
       <div className="main__content">
         <MainHeader />
-        <div className="second__main__content flex-col-reverse md:flex-row">
+        <div className="second__main__content flex-col md:flex-row">
           <MainImage
             large_image_url={data?.data?.images.webp?.large_image_url}
             title={data?.data.title}

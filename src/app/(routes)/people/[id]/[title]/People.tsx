@@ -22,7 +22,7 @@ export const People = ({ id }: { id: string }) => {
     >
       <div className="main__content">
         <MainHeader />
-        <div className="second__main__content flex-col-reverse md:flex-row">
+        <div className="second__main__content flex-col md:flex-row">
           <MainImage person={data?.data!} />
           <div className="second__main__content__article overflow-hidden">
             <TabsInfo
